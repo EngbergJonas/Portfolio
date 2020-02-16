@@ -1,6 +1,10 @@
 export default {
   colors: {
-    background: 'green',
-    text: 'black'
+    primary: 'gray',
+    secondary: 'black',
+    danger: 'green',
+    info: 'red',
+    pale: 'orange',
+    light: 'purple'
   }
 }

@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 
-import { Menu, MenuContainer, Brand, MenuItem, MenuLink } from '../Styles/Menu'
+import { Menu, MenuContainer, Brand, BrandText, MenuItem, MenuLink } from '../Styles/Menu'
 import MenuBurger from '../Styles/MenuBurger'
-const Nav = () => {
+
+const Nav = ({ mode, setMode }) => {
   const [ open, setOpen ] = useState(false)
-  const props = { open: open, setOpen: setOpen }
+  const props = { open, setOpen }
 
   return (
-    <Menu>
-      <Brand to='#'>
-        <h4>Jonas Engberg</h4>
-      </Brand>
+    <Menu sticky>
+      <MenuItem>
+        <Brand to='#'>
+          <BrandText to='#'>Engberg Development</BrandText>
+        </Brand>
+      </MenuItem>
       <MenuContainer active={open}>
         <MenuItem active={open}>
           <MenuLink to='#'>Home</MenuLink>
@@ -23,6 +26,11 @@ const Nav = () => {
         </MenuItem>
         <MenuItem active={open}>
           <MenuLink to='#'>Contact</MenuLink>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to='#' onClick={() => setMode(!mode)}>
+            {mode ? 'Dark Mode' : 'Light Mode'}
+          </MenuLink>
         </MenuItem>
       </MenuContainer>
       <MenuBurger {...props} />
