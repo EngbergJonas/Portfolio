@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export const Menu = styled.nav`
   display: flex;
-  padding: 0px;
+  padding: 0.5rem 0;
   justify-content: space-around;
   align-items: center;
   background-color: ${props => props.theme.colors.primary};
@@ -34,12 +34,12 @@ export const MenuContainer = styled.ul`
 
   @media (min-width: 768px) {
     transform: translateX(0%);
-    font-size: 16px;
+    font-size: 20px;
     position: relative;
     flex-direction: row;
     height: 0vh;
     top: 0vh;
-    width: 30%;
+    width: 25%;
   }
 `
 export const MenuItem = styled.li`
@@ -58,7 +58,11 @@ font-weight: 300;
 
 `
 
-export const Brand = styled.div`padding: 1rem 0 1rem;`
+export const Brand = styled.div`
+  height: auto;
+  width: 6rem;
+  position: relative;
+`
 
 export const BrandText = styled(({ ...props }) => <Link {...props} />)`
   color: ${props => props.theme.colors.light};

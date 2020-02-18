@@ -27,3 +27,13 @@ nav {
 h1 {
   font-weight: 100 !important;
 }
+
+.svg-test {
+  fill: #fff;
+}
+.svg-test1 {
+  fill: #fff;
+}
+.svg-test1:hover {
+  fill: #fff;
+}
