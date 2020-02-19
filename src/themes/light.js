@@ -1,3 +1,5 @@
+import fonts from './fonts'
+
 export default {
   colors: {
     primary: 'gray',
@@ -6,5 +8,6 @@ export default {
     info: 'red',
     pale: 'orange',
     light: 'purple'
-  }
+  },
+  fonts
 }

@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { Menu, MenuContainer, Brand, BrandText, MenuItem, MenuLink } from '../Styles/Menu'
-import MenuBurger from '../Styles/MenuBurger'
-import { ReactSVG } from 'react-svg'
-
-import logo from '../../logo.svg'
+import { Menu, MenuContainer, Brand, MenuItem, MenuLink, BrandText } from './Menu'
+import MenuBurger from './MenuBurger'
 
 const Nav = ({ mode, setMode }) => {
   const [ open, setOpen ] = useState(false)
@@ -12,7 +9,7 @@ const Nav = ({ mode, setMode }) => {
   return (
     <Menu sticky>
       <Brand className='svg-test1'>
-        <ReactSVG src={logo} onClick={() => setMode(!mode)} />
+        <BrandText>Jonas Engberg</BrandText>
       </Brand>
       <MenuContainer active={open}>
         <MenuItem active={open}>
