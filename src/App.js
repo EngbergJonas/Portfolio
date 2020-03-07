@@ -16,7 +16,7 @@ const App = () => {
     <ThemeProvider theme={mode ? lightTheme : darkTheme}>
       <Router>
         <Nav {...props} />
-        <Hero />
+        <Hero mode={mode} />
       </Router>
       <StickyBottomLogo />
     </ThemeProvider>

@@ -14,7 +14,7 @@ export const LogoContainer = styled.div`
   position: fixed;
   width: 35vw;
   bottom: 2rem;
-  @media ${device.greaterThan.laptop} {
+  @media ${device.greaterThan.tablet} {
     width: 100vw;
     justify-content: flex-end;
   }

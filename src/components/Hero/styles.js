@@ -1,16 +1,35 @@
-import React from 'react'
 import styled from 'styled-components'
 import device from '../../device'
-const Container = styled.div`width: 100vw;`
+import backgroundImg from '../../media/background.svg'
+import backgroundImgLight from '../../media/background_light.svg'
 
-const Title = styled.h1`
+export const Page = styled.div`
+  background-image: ${props => (props.dark ? `url(${backgroundImg})` : `url(${backgroundImgLight})`)};
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: ${props => props.theme.colors.light};
+  font-family: 'Raleway', sans-serif;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+`
+
+export const Container = styled.div`width: 100vw;`
+
+export const Title = styled.h1`
   font-size: ${props => props.theme.fonts.size.large.s};
   font-weight: ${props => props.theme.fonts.weight.light};
-  color: ${props => props.theme.colors.test1};
+  color: ${props => props.theme.colors.light};
   padding: 0;
   margin: 0;
   &::selection {
-    background-color: ${props => props.theme.colors.danger};
+    background-color: ${props => props.theme.colors.test1};
   }
   @media ${device.greaterThan.desktop} {
     font-size: ${props => props.theme.fonts.size.large.xl};
@@ -26,30 +45,27 @@ const Title = styled.h1`
   }
 `
 
-const Subtitle = styled.h2`
+export const Subtitle = styled.h2`
   font-size: ${props => props.theme.fonts.size.large.xs};
   color: ${props => props.theme.colors.light};
   padding: 0.3rem 0 0;
   margin: 0;
   font-weight: ${props => props.theme.fonts.weight.light};
-
+  &::selection {
+    background-color: ${props => props.theme.colors.test1};
+  }
   @media ${device.greaterThan.desktopMin} {
     font-size: ${props => props.theme.fonts.size.large.s};
     padding: 0;
   }
-
-  @media ${device.greaterThan.laptop} and ${device.smallerThan.desktopMin} {
-    font-size: ${props => props.theme.fonts.size.large.xs};
-    padding: 0;
-  }
 `
 
-const Span = styled.span`
+export const Span = styled.span`
   font-size: ${props => props.theme.fonts.size.large.xs};
   font-weight: ${props => props.theme.fonts.weight.bold};
   color: ${props => props.theme.colors.info};
   &::selection {
-    background-color: ${props => props.theme.colors.danger};
+    background-color: ${props => props.theme.colors.test1};
   }
   @media ${device.greaterThan.desktopMin} {
     font-size: ${props => props.theme.fonts.size.large.md};
@@ -59,7 +75,7 @@ const Span = styled.span`
   }
 `
 
-const Button = styled.button`
+export const Button = styled.button`
   border: 1px solid ${props => props.theme.colors.light};
   border-radius: 4px;
   padding: 0.6rem;
@@ -68,7 +84,7 @@ const Button = styled.button`
   outline: 0;
   box-shadow: none;
   font-size: ${props => props.theme.fonts.size.xs};
-  font-weight: ${props => props.theme.fonts.weight.thin};
+  font-weight: ${props => props.theme.fonts.weight.light};
   color: ${props => props.theme.colors.light};
   &:hover {
     border-color: ${props => props.theme.colors.test1};
@@ -85,23 +101,3 @@ const Button = styled.button`
     font-size: ${props => props.theme.fonts.size.md};
   }
 `
-
-const HeroTitle = () => {
-  return (
-    <Container>
-      <Title>Hello,</Title>
-      <Subtitle>
-        I'm <Span>Jonas Engberg</Span>
-      </Subtitle>
-      <Subtitle>
-        My <Span>passion</Span> is <Span>Web Development</Span>
-      </Subtitle>
-      <Subtitle>
-        and <Span>Web Design</Span>
-      </Subtitle>
-      <Button>About me</Button>
-    </Container>
-  )
-}
-
-export default HeroTitle

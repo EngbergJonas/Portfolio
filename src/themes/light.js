@@ -2,12 +2,13 @@ import fonts from './fonts'
 
 export default {
   colors: {
-    primary: 'gray',
+    primary: '#3E3B5C',
     secondary: 'black',
-    danger: 'green',
-    info: 'red',
+    danger: '#EDCD90',
+    info: '#EDCD90',
     pale: 'orange',
-    light: 'purple'
+    light: '#FFFFFF',
+    test1: '#EDCD90'
   },
   fonts
 }
