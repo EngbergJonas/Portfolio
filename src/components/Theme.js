@@ -1,3 +1,7 @@
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { connect } from 'react-redux'
+
 const fonts = {
   size: {
     xs: '16px',
@@ -49,3 +53,13 @@ export const light = {
   },
   fonts
 }
+
+const Theme = props => <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
+
+const mapStateToProps = state => {
+  return {
+    theme: state.theme
+  }
+}
+
+export default connect(mapStateToProps)(Theme)

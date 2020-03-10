@@ -1,8 +1,12 @@
 import React from 'react'
 import { Title, Subtitle, Span, Container, Page, Button } from './styles'
-const Hero = ({ mode }) => {
+
+import { connect } from 'react-redux'
+import { dark } from '../Theme'
+
+const Hero = props => {
   return (
-    <Page dark={!mode}>
+    <Page dark={props.theme === dark}>
       <Container>
         <Title>Hello,</Title>
         <Subtitle>
@@ -20,4 +24,10 @@ const Hero = ({ mode }) => {
   )
 }
 
-export default Hero
+const mapStateToProps = state => {
+  return {
+    theme: state.theme
+  }
+}
+
+export default connect(mapStateToProps)(Hero)

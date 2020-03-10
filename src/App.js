@@ -1,39 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { BrowserRouter as Router } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
-import { dark, light } from './themes'
+import Theme from './components/Theme'
 
 import Hero from './components/Hero/Hero'
 import Nav from './components/Nav/Nav'
-import StickyBottomLogo from './components/StickyBottomLogo/StickyBottomLogo'
+import BottomBrand from './components/BottomBrand/BottomBrand'
 
-//REDUX
-import { setTheme } from './reducers/themeReducer'
-import { connect } from 'react-redux'
-
-const App = props => {
-  const [ mode, setMode ] = useState(false)
-  const modes = { mode, setMode }
-  console.log('theme object', light)
-
+const App = () => {
   return (
-    <ThemeProvider theme={mode ? light : dark}>
+    <Theme>
       <Router>
-        <Nav {...modes} />
-        <Hero mode={mode} />
-        <button onClick={() => props.setTheme(light)} />
-        {console.log('theme in redux', props.theme.theme)}
+        <Nav />
+        <Hero />
+        <BottomBrand />
       </Router>
-      <StickyBottomLogo />
-    </ThemeProvider>
+    </Theme>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  }
-}
-
-export default connect(mapStateToProps, { setTheme })(App)
+export default App

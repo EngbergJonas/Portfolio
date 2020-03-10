@@ -1,4 +1,4 @@
-import { dark } from '../themes'
+import { dark } from '../components/Theme'
 
 export const setTheme = theme => {
   return async dispatch => {
@@ -9,10 +9,12 @@ export const setTheme = theme => {
   }
 }
 
-const themeReducer = (state = [], action) => {
+const initialState = dark
+
+const themeReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_THEME':
-      return { ...state, theme: action.theme }
+      return action.theme
     default:
       return state
   }
