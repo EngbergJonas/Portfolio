@@ -1,3 +1,5 @@
+/* Most of these will be removed! Testing purposes */
+
 const size = {
   mobileS: '320px',
   mobileM: '375px',

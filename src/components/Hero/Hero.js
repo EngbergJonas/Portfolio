@@ -1,5 +1,5 @@
 import React from 'react'
-import { Title, Subtitle, Span, Container, Page, Button } from './styles'
+import { Title, Subtitle, Span, Container, Page, LinkButton, Item } from './styles'
 
 import { connect } from 'react-redux'
 import { dark } from '../Theme'
@@ -18,7 +18,11 @@ const Hero = props => {
         <Subtitle>
           and <Span>Web Design</Span>
         </Subtitle>
-        <Button>About Me</Button>
+        <Item>
+          <LinkButton smooth to='/#about'>
+            About Me
+          </LinkButton>
+        </Item>
       </Container>
     </Page>
   )

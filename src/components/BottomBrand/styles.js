@@ -12,7 +12,7 @@ export const LogoContainer = styled.div`
   position: fixed;
   width: 35vw;
   bottom: 2rem;
-  @media ${device.greaterThan.tablet} {
+  @media ${device.greaterThan.laptopLMin} {
     width: 100vw;
     justify-content: flex-end;
   }

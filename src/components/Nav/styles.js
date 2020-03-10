@@ -30,11 +30,15 @@ export const MenuContainer = styled.ul`
   align-items: center;
   transform: ${props => (props.active ? 'translateY(0%)' : 'translateY(-100%)')};
   transition: transform 0.5s ease-in;
+
   @media ${device.greaterThan.laptopLMin} {
     transform: translateX(0%);
     position: relative;
     flex-direction: row;
     height: 0vh;
+    width: 50%;
+  }
+  @media ${device.greaterThan.laptopL} {
     width: 30%;
   }
 `
@@ -67,6 +71,7 @@ export const MenuTag = styled.a`
   font-size: ${props => props.theme.fonts.size.large.md};
   font-family: 'Raleway', sans-serif;
   &:hover {
+    cursor: pointer;
     border-bottom: 2px solid ${props => props.theme.colors.danger};
   }
   @media ${device.greaterThan.laptopLMin} {
@@ -80,8 +85,11 @@ export const MenuBrand = styled.div`
   width: 50%;
   position: relative;
   z-index: 9998;
-  @media ${device.greaterThan.tablet} {
+  @media ${device.greaterThan.laptopL} {
     width: 30%;
+  }
+  @media ${device.greaterThan.laptopLMin} {
+    width: 20%;
   }
 `
 
