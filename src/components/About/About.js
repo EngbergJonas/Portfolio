@@ -1,26 +1,30 @@
 import React from 'react'
-import { Page, Subtitle, Paragraph, Container, Title, ContainerItem } from './styles'
+import { Page, Paragraph, Container, Title, ContainerItem } from './styles'
 
 const About = () => {
   return (
     <Page>
-      <Container center>
+      <Container>
         <ContainerItem>
           <Title id='about'>About Me</Title>
         </ContainerItem>
       </Container>
-      <Container center>
-        <ContainerItem>
-          <Subtitle>Lorem Ipsum</Subtitle>
-          <Paragraph>Container 1</Paragraph>
+      <Container>
+        <ContainerItem item>
+          <Paragraph>
+            I'm a Software Developer from Helsinki, Finland. My passion is web design and modern solutions.
+          </Paragraph>
         </ContainerItem>
-        <ContainerItem>
-          <Subtitle>Lorem Ipsum</Subtitle>
-          <Paragraph>Container 2</Paragraph>
+      </Container>
+      <Container>
+        <ContainerItem item>
+          <Paragraph>Design</Paragraph>
         </ContainerItem>
-        <ContainerItem>
-          <Subtitle>Lorem Ipsum</Subtitle>
-          <Paragraph>Container 3</Paragraph>
+        <ContainerItem item>
+          <Paragraph>Responsive</Paragraph>
+        </ContainerItem>
+        <ContainerItem item>
+          <Paragraph>Modern</Paragraph>
         </ContainerItem>
       </Container>
     </Page>

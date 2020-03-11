@@ -8,7 +8,7 @@ const fonts = {
     s: '18px',
     md: '20px',
     lg: '22px',
-    xl: '24px',
+    xl: '1.5rem',
     large: {
       xs: '30px',
       s: '40px',

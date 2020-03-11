@@ -5,7 +5,6 @@ import Theme from './components/Theme'
 
 import Hero from './components/Hero/Hero'
 import Nav from './components/Nav/Nav'
-import BottomBrand from './components/BottomBrand/BottomBrand'
 import About from './components/About/About'
 
 const App = () => {
@@ -15,7 +14,6 @@ const App = () => {
         <Nav />
         <Hero />
         <About />
-        <BottomBrand />
       </Router>
     </Theme>
   )

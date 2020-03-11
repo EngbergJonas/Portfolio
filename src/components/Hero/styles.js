@@ -71,11 +71,11 @@ export const Span = styled.span`
   &::selection {
     background-color: ${props => props.theme.colors.test1};
   }
+  @media ${device.greaterThan.laptop} {
+    font-size: ${props => props.theme.fonts.size.large.s};
+  }
   @media ${device.greaterThan.desktopMin} {
     font-size: ${props => props.theme.fonts.size.large.md};
-  }
-  @media ${device.greaterThan.laptop} and ${device.smallerThan.desktopMin} {
-    font-size: ${props => props.theme.fonts.size.large.s};
   }
 `
 
@@ -92,13 +92,12 @@ export const LinkButton = styled(Link)`
     border-color: ${props => props.theme.colors.test1};
     color: ${props => props.theme.colors.test1};
   }
-  @media ${device.greaterThan.desktop} {
-    font-size: ${props => props.theme.fonts.size.xl};
+  @media ${device.greaterThan.laptop}{
+    font-size: ${props => props.theme.fonts.size.md};
   }
   @media ${device.greaterThan.laptopL} {
     font-size: ${props => props.theme.fonts.size.lg};
   }
-  @media ${device.greaterThan.laptop} and ${device.smallerThan.laptopL} {
-    font-size: ${props => props.theme.fonts.size.md};
-  }
+
+
 `

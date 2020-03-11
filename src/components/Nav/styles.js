@@ -1,20 +1,22 @@
-import React from 'react'
-
 import styled from 'styled-components'
-
 import { Link } from 'react-router-dom'
 import device from '../../device'
+import { ReactSVG } from 'react-svg'
 
 export const Menu = styled.nav`
   display: flex;
   padding: 1rem 0;
   justify-content: space-around;
   align-items: center;
+  height: 2rem;
   background-color: ${props => props.theme.colors.primary};
   position: ${props => (props.sticky ? 'fixed' : 'relative')};
   width: 100%;
   border-bottom: 1px solid ${props => props.theme.colors.test1};
   z-index: 9999;
+  @media ${device.greaterThan.laptopLMin} {
+    height: 2.5rem;
+  }
 `
 
 export const MenuContainer = styled.ul`
@@ -36,10 +38,10 @@ export const MenuContainer = styled.ul`
     position: relative;
     flex-direction: row;
     height: 0vh;
-    width: 50%;
+    width: 40%;
   }
   @media ${device.greaterThan.laptopL} {
-    width: 30%;
+    width: 25%;
   }
 `
 export const MenuItem = styled.li`
@@ -47,7 +49,7 @@ export const MenuItem = styled.li`
   display: inline-block;
 `
 
-export const MenuLink = styled(({ ...props }) => <Link {...props} />)`
+export const MenuLink = styled(Link)`
 color: ${props => props.theme.colors.light};
 text-decoration: none;
 letter-spacing: 2px;
@@ -80,26 +82,15 @@ export const MenuTag = styled.a`
   }
 `
 
-export const MenuBrand = styled.div`
-  height: auto;
-  width: 50%;
-  position: relative;
-  z-index: 9998;
-  @media ${device.greaterThan.laptopL} {
-    width: 30%;
-  }
-  @media ${device.greaterThan.laptopLMin} {
-    width: 20%;
-  }
-`
+export const MenuBrandContainer = styled.div`z-index: 9998;`
 
-export const MenuBrandText = styled.h4`
-  font-size: ${props => props.theme.fonts.size.md};
-  font-family: 'Open Sans', sans-serif;
-  font-weight: ${props => props.theme.fonts.weight.light};
-  color: ${props => props.theme.colors.light};
-  padding: 0;
-  margin: 0;
+export const MenuBrand = styled(ReactSVG)`
+  fill: ${props => props.theme.colors.test1};
+  height: auto;
+  width: 15%;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 18%;
+  }
 `
 
 export const MenuBurger = styled.div`
@@ -109,6 +100,7 @@ export const MenuBurger = styled.div`
     display: none;
   }
 `
+
 export const Line = styled.div`
   width: 30px;
   height: 3px;

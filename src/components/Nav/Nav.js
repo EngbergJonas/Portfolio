@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
-import { Menu, MenuContainer, MenuBrand, MenuItem, MenuLink, MenuBrandText, MenuTag, MenuBurger, Line } from './styles'
+import {
+  Menu,
+  MenuContainer,
+  MenuBrandContainer,
+  MenuBrand,
+  MenuItem,
+  MenuLink,
+  MenuTag,
+  MenuBurger,
+  Line
+} from './styles'
 import cv from '../../media/CV.pdf'
+import logo from '../../media/logo.svg'
 
 import { connect } from 'react-redux'
 import { setTheme } from '../../reducers/themeReducer'
@@ -12,9 +23,9 @@ const Nav = props => {
   return (
     <Menu sticky>
       {/* NavBrand */}
-      <MenuBrand className='svg-test1'>
-        <MenuBrandText>Jonas Engberg</MenuBrandText>
-      </MenuBrand>
+      <MenuBrandContainer>
+        <MenuBrand src={logo} />
+      </MenuBrandContainer>
       {/* NavBar */}
       <MenuContainer active={open}>
         <MenuItem>
