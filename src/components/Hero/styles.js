@@ -37,15 +37,9 @@ export const Title = styled.h1`
   }
   @media ${device.greaterThan.desktop} {
     font-size: ${props => props.theme.fonts.size.large.xl};
-    font-weight: 500;
-  }
-  @media ${device.greaterThan.desktop} {
-    font-size: ${props => props.theme.fonts.size.large.lg};
-    font-weight: 500;
   }
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.md};
-    font-weight: 500;
   }
 `
 
