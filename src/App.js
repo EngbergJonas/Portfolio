@@ -13,18 +13,8 @@ const App = () => {
     <Theme>
       <Router>
         <Nav />
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={() => (
-              <div>
-                <Hero scrollPosition={aboutRef} />
-                <About ref={aboutRef} />
-              </div>
-            )}
-          />
-        </Switch>
+        <Hero scrollPosition={aboutRef} />
+        <About ref={aboutRef} />
       </Router>
     </Theme>
   )

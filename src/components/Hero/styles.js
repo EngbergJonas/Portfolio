@@ -77,7 +77,6 @@ export const Button = styled.button`
   border-radius: 4px;
   padding: 0.6rem;
   margin: 0.6rem 0 0;
-  text-decoration: none;
   background: transparent;
   font-size: ${props => props.theme.fonts.size.xs};
   font-weight: ${props => props.theme.fonts.weight.light};
@@ -86,6 +85,10 @@ export const Button = styled.button`
     border-color: ${props => props.theme.colors.test1};
     cursor: pointer;
     color: ${props => props.theme.colors.test1};
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: none;
   }
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.md};
