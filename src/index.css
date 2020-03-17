@@ -9,15 +9,15 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  height: 100vh;
-  overflow-x: hidden;
+  height: 100%;
+  overflow: auto;
 }
 
 /*This is required inside of body to hide overflow-x for menu on mobile devices!*/
 .wrapper {
-  overflow-x: hidden;
+  overflow: auto;
   position: relative;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }

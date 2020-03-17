@@ -1,10 +1,11 @@
 import React from 'react'
-import { Title, Subtitle, Span, Container, Page, LinkButton, Item } from './styles'
+import { Title, Subtitle, Span, Container, Page, Button, Item } from './styles'
 
 import { connect } from 'react-redux'
 import { dark } from '../Theme'
 
 const Hero = props => {
+  const scrollToRef = () => props.scrollPosition.current.scrollIntoView({ behavior: 'smooth' })
   return (
     <Page dark={props.theme === dark}>
       <Container>
@@ -19,9 +20,7 @@ const Hero = props => {
           and <Span>Web Design</Span>
         </Subtitle>
         <Item>
-          <LinkButton smooth to='/#about'>
-            About Me
-          </LinkButton>
+          <Button onClick={() => scrollToRef()}>About Me</Button>
         </Item>
       </Container>
     </Page>

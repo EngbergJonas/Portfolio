@@ -5,12 +5,12 @@ import diamond from '../../media/diamond.svg'
 import signature from '../../media/signature.svg'
 import { Page, Paragraph, Container, Title, ContainerItem, Icon } from './styles'
 
-const About = () => {
+const About = React.forwardRef((props, ref) => {
   return (
     <Page>
       <Container>
         <ContainerItem>
-          <Title id='about'>About Me</Title>
+          <Title ref={ref}>About Me</Title>
         </ContainerItem>
       </Container>
 
@@ -45,6 +45,6 @@ const About = () => {
       </Container>
     </Page>
   )
-}
+})
 
 export default About

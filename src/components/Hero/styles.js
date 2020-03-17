@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import device from '../../device'
 import backgroundImg from '../../media/background.svg'
 import backgroundImgLight from '../../media/background_light.svg'
-import { HashLink as Link } from 'react-router-hash-link'
 
 export const Page = styled.div`
   background-image: ${props => (props.dark ? `url(${backgroundImg})` : `url(${backgroundImgLight})`)};
@@ -73,25 +72,25 @@ export const Span = styled.span`
   }
 `
 
-export const LinkButton = styled(Link)`
+export const Button = styled.button`
   border: 1px solid ${props => props.theme.colors.light};
   border-radius: 4px;
   padding: 0.6rem;
   margin: 0.6rem 0 0;
   text-decoration: none;
+  background: transparent;
   font-size: ${props => props.theme.fonts.size.xs};
   font-weight: ${props => props.theme.fonts.weight.light};
   color: ${props => props.theme.colors.light};
   &:hover {
     border-color: ${props => props.theme.colors.test1};
+    cursor: pointer;
     color: ${props => props.theme.colors.test1};
   }
-  @media ${device.greaterThan.laptop}{
+  @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.md};
   }
   @media ${device.greaterThan.laptopL} {
     font-size: ${props => props.theme.fonts.size.lg};
   }
-
-
 `
