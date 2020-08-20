@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import device from '../../device'
-import backgroundImg from '../../media/background.svg'
-import backgroundImgLight from '../../media/background_light.svg'
+import backgroundImg from '../../assets/media/background.svg'
+import backgroundImgLight from '../../assets/media/background_light.svg'
 
 export const Page = styled.div`
   background-image: ${props => (props.dark ? `url(${backgroundImg})` : `url(${backgroundImgLight})`)};

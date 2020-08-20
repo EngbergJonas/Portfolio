@@ -7,32 +7,28 @@ import { dark } from '../Shared/Theme'
 
 const Hero = props => {
   const scrollToRef = () => props.scrollPosition.current.scrollIntoView({ behavior: 'smooth' })
-  const writeRows = () => {
-    return (
-      <div>
-        <Title>Hello,</Title>
-        <Subtitle>
-          I'm <Span>Jonas Engberg</Span>
-        </Subtitle>
-        <Subtitle>
-          I'm a {' '}
-          <Span>
-            <CursorSpan>
-              <Typewriter />
-            </CursorSpan>
-          </Span>
-        </Subtitle>
-        <Item>
-          <Button onClick={() => scrollToRef()}>About Me</Button>
-        </Item>
-      </div>
-    )
-  }
-  return (
-    <Page dark={props.theme === dark}>
-      <Container>{writeRows()}</Container>
-    </Page>
+
+  const rows = t => (
+    <Container>
+      <Title>{t('titles.frontpage.row1')}</Title>
+      <Subtitle>
+        {t('titles.frontpage.row2')} <Span>{t('titles.frontpage.name')}</Span>
+      </Subtitle>
+      <Subtitle>
+        {t('titles.frontpage.row3')}{' '}
+        <Span>
+          <CursorSpan>
+            <Typewriter words={[ t('expertises.fullstack'), t('expertises.design'), t('expertises.engineer') ]} />
+          </CursorSpan>
+        </Span>
+      </Subtitle>
+      <Item>
+        <Button onClick={() => scrollToRef()}>{t('buttons.about')}</Button>
+      </Item>
+    </Container>
   )
+
+  return <Page dark={props.theme === dark}>{rows(props.t)}</Page>
 }
 
 const mapStateToProps = state => {

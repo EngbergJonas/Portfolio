@@ -1,7 +1,23 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import device from '../../device'
 import { ReactSVG } from 'react-svg'
+
+const enlarge = keyframes`
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+  }
+`
+
+const fadeIn = keyframes`
+  from {opacity: 0;} 
+  to {opacity: 1;}
+`
 
 export const Menu = styled.nav`
   display: flex;
@@ -41,7 +57,7 @@ export const MenuContainer = styled.ul`
     width: 40%;
   }
   @media ${device.greaterThan.laptopL} {
-    width: 25%;
+    width: 35%;
   }
 `
 export const MenuItem = styled.li`
@@ -97,14 +113,25 @@ export const MenuTag = styled.a`
   }
 `
 
-export const MenuBrandContainer = styled.div`z-index: 9998;`
+export const MenuBrandContainer = styled.div`
+  z-index: 9998;
+  width: 40px;
+  display: inline-block;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 40px;
+  }
+`
 
 export const MenuBrand = styled(ReactSVG)`
   fill: ${props => props.theme.colors.neutralLight};
   height: auto;
-  width: 15%;
-  @media ${device.greaterThan.laptopLMin} {
-    width: 18%;
+  position: relative;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+    animation: ${enlarge} 0.3s linear;
+    fill: ${props => props.theme.colors.neutralDark};
+    transform: scale(1.1);
   }
 `
 
@@ -127,4 +154,16 @@ export const Line = styled.div`
       ? 'rotate(-45deg) translate(-6px, 7px)'
       : props.active && props.three ? 'rotate(45deg) translate(-6px, -7px)' : ''};
   opacity: ${props => (props.active && props.two ? 0 : 1)};
+`
+export const DropdownMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  border-radius: 3px;
+  //background-color: ${props => props.theme.colors.primaryDark};
+  margin-top: 24px;
+  border-top: none;
+  padding-top: 20px;
+  animation: ${fadeIn} 0.3s;
+  position: absolute;
 `

@@ -1,24 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import useTypewriter from 'react-typewriter-hook'
 
-const Typewriter = () => {
-  const words = [ 'Web Designer', 'FullStack Developer', 'Web Designer' ]
-  let index = 0
-  const [ word, setWord ] = useState('FullStack Developer')
+let index = 0
+
+const Typewriter = ({ words }) => {
+  const [ currentWord, setCurrentWord ] = useState(words[0])
   const intervalRef = useRef({})
-  const currentWord = useTypewriter(word)
+  const word = useTypewriter(currentWord)
+
   useEffect(
     () => {
       intervalRef.current = setInterval(() => {
         index = index > 2 ? 0 : ++index
-        setWord(words[index])
-      }, 5000)
+        setCurrentWord(words[index])
+      }, 4000)
       return function clear() {
         clearInterval(intervalRef.current)
       }
     },
-    [ word ]
+    [ currentWord, words ]
   )
-  return currentWord
+  return word
 }
 export default Typewriter

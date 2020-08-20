@@ -1,58 +1,62 @@
 import React from 'react'
-import lightbulb from '../../media/lightbulb.svg'
-import pen from '../../media/pen.svg'
-import diamond from '../../media/diamond.svg'
-import signature from '../../media/signature.svg'
+
+import lightbulb from '../../assets/media/lightbulb.svg'
+import pen from '../../assets/media/pen.svg'
+import diamond from '../../assets/media/diamond.svg'
+import signature from '../../assets/media/signature.svg'
+import jonas from '../../assets/media/jonas.jpg'
+
 import { Page, Paragraph, Container, Title, ContainerItem, Icon, ProfilePicture, ProfileFrame } from './styles'
 
-import jonasImg from '../../media/jonas.jpg'
-
 const About = React.forwardRef((props, ref) => {
-  return (
-    <Page>
+  const LogoContainer = props => (
+    <div>
+      <ContainerItem>
+        <Icon src={props.logo} />
+        <Paragraph iconText>{props.text}</Paragraph>
+      </ContainerItem>
+    </div>
+  )
+  const rows = t => (
+    <div>
       <Container>
         <ContainerItem>
-          <Title ref={ref}>About Me</Title>
+          <Title ref={ref}>{t('titles.about')}</Title>
         </ContainerItem>
       </Container>
+
       <Container>
         <ContainerItem>
           <ProfileFrame>
-            <ProfilePicture src={jonasImg} />
+            <ProfilePicture src={jonas} />
           </ProfileFrame>
         </ContainerItem>
       </Container>
+
       <Container>
-        <ContainerItem>
-          <Icon src={lightbulb} />
-          <Paragraph iconText>Invent</Paragraph>
-        </ContainerItem>
-        <ContainerItem>
-          <Icon src={pen} />
-          <Paragraph iconText>Design</Paragraph>
-        </ContainerItem>
-        <ContainerItem>
-          <Icon src={diamond} />
-          <Paragraph iconText>Implement</Paragraph>
-        </ContainerItem>
+        <LogoContainer logo={lightbulb} text={t('variables.invent')} />
+        <LogoContainer logo={pen} text={t('variables.design')} />
+        <LogoContainer logo={diamond} text={t('variables.implement')} />
       </Container>
+
       <Container text>
         <ContainerItem>
           <Icon signature src={signature} />
         </ContainerItem>
       </Container>
+
       <Container text>
         <ContainerItem item>
-          <Paragraph>
-            I'm a Software Developer from Helsinki, Finland. My passion is web design and modern solutions.
-          </Paragraph>
+          <Paragraph>{t('paragraphs.aboutIntro')}</Paragraph>
           <Paragraph info>
             This page is just a demo and currently under construction. Click on 'Resume' to get my Resume.
           </Paragraph>
         </ContainerItem>
       </Container>
-    </Page>
+    </div>
   )
+
+  return <Page>{rows(props.t)}</Page>
 })
 
 export default About

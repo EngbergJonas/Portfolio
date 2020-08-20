@@ -10,23 +10,38 @@ import {
   MenuBurger,
   Line
 } from './styles'
-import cv from '../../media/CV.pdf'
-import logo from '../../media/logo.svg'
 
+import cv from '../../assets/media/CV.pdf'
+import logo from '../../assets/media/logo.svg'
 import { connect } from 'react-redux'
 import { setTheme } from '../../reducers/themeReducer'
 import { light, dark } from '../Shared/Theme'
 
+import Dropdown from '../Nav/Dropdown'
+
+import i18n from '../../i18n'
+
 const Nav = props => {
   const [ open, setOpen ] = useState(false)
 
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng)
+  }
+
+  const changeTheme = () => (
+    <MenuItem>
+      <MenuTag onClick={() => props.setTheme(props.theme === dark ? light : dark)}>
+        {props.theme === dark ? 'Light' : 'Dark'}
+      </MenuTag>
+    </MenuItem>
+  )
+
   return (
     <Menu sticky>
-      {/* NavBrand */}
       <MenuBrandContainer>
         <MenuBrand src={logo} />
       </MenuBrandContainer>
-      {/* NavBar */}
+
       <MenuContainer active={open}>
         <MenuItem>
           <MenuLink to='#'>Projects</MenuLink>
@@ -40,12 +55,10 @@ const Nav = props => {
           <MenuLink to='#'>Contact</MenuLink>
         </MenuItem>
         <MenuItem>
-          <MenuTag onClick={() => props.setTheme(props.theme === dark ? light : dark)}>
-            {props.theme === dark ? 'Light' : 'Dark'}
-          </MenuTag>
+          <Dropdown changeTheme={changeTheme()} />
         </MenuItem>
       </MenuContainer>
-      {/* NavBurger */}
+
       <MenuBurger onClick={() => setOpen(!open)}>
         <Line active={open} one />
         <Line active={open} two />
