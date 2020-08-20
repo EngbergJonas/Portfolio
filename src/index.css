@@ -10,12 +10,14 @@ body {
   padding: 0;
   font-size: 16px;
   height: 100%;
-  overflow: auto;
+  /*overflow: auto;*/
+  overflow-x: hidden;
 }
 
 /*This is required inside of body to hide overflow-x for menu on mobile devices!*/
 .wrapper {
-  overflow: auto;
+  /*overflow: auto;*/
+  overflow-x: hidden;
   position: relative;
   height: 100%;
   margin: 0;

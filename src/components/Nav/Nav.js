@@ -15,7 +15,7 @@ import logo from '../../media/logo.svg'
 
 import { connect } from 'react-redux'
 import { setTheme } from '../../reducers/themeReducer'
-import { light, dark } from '../Theme'
+import { light, dark } from '../Shared/Theme'
 
 const Nav = props => {
   const [ open, setOpen ] = useState(false)

@@ -3,7 +3,9 @@ import lightbulb from '../../media/lightbulb.svg'
 import pen from '../../media/pen.svg'
 import diamond from '../../media/diamond.svg'
 import signature from '../../media/signature.svg'
-import { Page, Paragraph, Container, Title, ContainerItem, Icon } from './styles'
+import { Page, Paragraph, Container, Title, ContainerItem, Icon, ProfilePicture, ProfileFrame } from './styles'
+
+import jonasImg from '../../media/jonas.jpg'
 
 const About = React.forwardRef((props, ref) => {
   return (
@@ -13,7 +15,13 @@ const About = React.forwardRef((props, ref) => {
           <Title ref={ref}>About Me</Title>
         </ContainerItem>
       </Container>
-
+      <Container>
+        <ContainerItem>
+          <ProfileFrame>
+            <ProfilePicture src={jonasImg} />
+          </ProfileFrame>
+        </ContainerItem>
+      </Container>
       <Container>
         <ContainerItem>
           <Icon src={lightbulb} />

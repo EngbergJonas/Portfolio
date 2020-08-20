@@ -47,6 +47,21 @@ export const MenuContainer = styled.ul`
 export const MenuItem = styled.li`
   list-style: none;
   display: inline-block;
+  &:first-child {
+    padding-top: 10rem;
+  }
+  &:last-child {
+    padding-bottom: 10rem;
+  }
+
+  @media ${device.greaterThan.laptopLMin} {
+    &:first-child {
+      padding-top: 0;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
 `
 
 export const MenuLink = styled(Link)`

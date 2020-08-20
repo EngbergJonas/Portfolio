@@ -17,16 +17,20 @@ export const Page = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
+  //text-align: center;
 `
 
-export const Container = styled.div`width: 100vw;`
+export const Container = styled.div`
+  width: 70vw;
+  align-items: center;
+  //text-align: center;
+`
 
 export const Item = styled.div`margin: 2rem 0 0;`
 
 export const Title = styled.h1`
-  font-size: ${props => props.theme.fonts.size.large.s};
-  font-weight: ${props => props.theme.fonts.weight.light};
+  font-size: ${props => props.theme.fonts.size.large.hl};
+  font-weight: ${props => props.theme.fonts.weight.bold};
   font-style: 'Open Sans', sans-serif;
   color: ${props => props.theme.colors.light};
   padding: 0;
@@ -35,10 +39,11 @@ export const Title = styled.h1`
     background-color: ${props => props.theme.colors.test1};
   }
   @media ${device.greaterThan.desktop} {
-    font-size: ${props => props.theme.fonts.size.large.xl};
+    font-size: ${props => props.theme.fonts.size.large.hl};
   }
   @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.large.md};
+    font-size: ${props => props.theme.fonts.size.large.hl};
+    font-weight: ${props => props.theme.fonts.weight.bold};
   }
 `
 

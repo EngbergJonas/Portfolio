@@ -2,10 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 import device from '../../device'
 import { ReactSVG } from 'react-svg'
+import jonasImg from '../../media/jonas.jpg'
 
 export const Page = styled.div`
   background: ${props => props.theme.colors.primary};
   border-top: 1px solid ${props => props.theme.colors.test1};
+`
+
+export const ProfilePicture = styled.img`
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+`
+
+export const ProfileFrame = styled.div`
+  height: 100px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid ${props => props.theme.colors.danger};
+  margin-bottom: 1rem;
+  @media ${device.greaterThan.laptop} {
+    height: 230px;
+    width: 230px;
+  }
 `
 
 export const Title = styled.h1`
@@ -13,7 +35,7 @@ export const Title = styled.h1`
   color: ${props => props.theme.colors.light};
   font-size: ${props => props.theme.fonts.size.large.md};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  margin: 3rem 0;
+  margin: 2rem 0 1rem 0;
   /* This will position the anchor tag nicely */
   &::before {
     display: block;
@@ -24,7 +46,7 @@ export const Title = styled.h1`
     pointer-events: none;
   }
   @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.large.xl};
+    font-size: ${props => props.theme.fonts.size.large.hl};
   }
 `
 
@@ -56,7 +78,7 @@ export const Container = styled.div`
 export const ContainerItem = styled.div``
 
 export const Icon = styled(({ signature, ...props }) => <ReactSVG {...props} />)`
-  stroke: ${props => props.theme.colors.test1};
+  stroke: ${props => (props.signature ? props.theme.colors.test1 : props.theme.colors.test1)};
   margin: auto;
   height: auto;
   width: ${props => (props.signature ? '30%' : '80%')};

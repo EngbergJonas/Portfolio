@@ -1,4 +1,4 @@
-import { dark } from '../components/Theme'
+import { dark } from '../components/Shared/Theme'
 
 export const setTheme = theme => {
   return async dispatch => {

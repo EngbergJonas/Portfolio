@@ -41,9 +41,16 @@ export const dark = {
   fonts
 }
 
+/*
+#EAE7DC white
+#D8C3A5 beige
+#8E8D8A gray
+#E98074 light red
+#E85A4F red
+*/
 export const light = {
   colors: {
-    primary: '#3E3B5C',
+    primary: '#',
     secondary: 'black',
     danger: '#EDCD90',
     info: '#EDCD90',

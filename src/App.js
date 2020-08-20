@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Theme from './components/Theme'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Theme from './components/Shared/Theme'
 
 import Hero from './components/Hero/Hero'
 import Nav from './components/Nav/Nav'
