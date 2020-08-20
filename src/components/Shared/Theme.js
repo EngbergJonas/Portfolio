@@ -30,13 +30,13 @@ const fonts = {
 
 export const dark = {
   colors: {
-    primary: '#1A1A1D',
-    secondary: '#4E4E50',
-    danger: '#6F2242',
-    info: '#950740',
-    pale: '#C3073F',
-    light: '#FFFFFF',
-    test1: '#66FCF1'
+    primaryDark: '#1A1A1D', //black
+    primaryLight: '#4E4E50', //gray
+    secondaryDark: '#6F2242', //wine-red
+    secondaryLight: '#950740', //wine-red-lighter
+    secondayPale: '#C3073F', //wine-red-lightest
+    neutralLight: '#FFFFFF', //white
+    neutralDark: '#66FCF1' //cyan
   },
   fonts
 }
@@ -50,13 +50,13 @@ export const dark = {
 */
 export const light = {
   colors: {
-    primary: '#',
-    secondary: 'black',
-    danger: '#EDCD90',
-    info: '#EDCD90',
-    pale: 'orange',
-    light: '#FFFFFF',
-    test1: '#EDCD90'
+    primaryDark: '#EAE7DC', //white
+    primaryLight: '#D8C3A5', //beige
+    secondaryDark: '#E85A4F', //red
+    secondaryLight: '#E98074', //light-red
+    secondaryPale: '#E98074',
+    neutralLight: '#686764', //dark-gray
+    neutralDark: '#E85A4F'
   },
   fonts
 }

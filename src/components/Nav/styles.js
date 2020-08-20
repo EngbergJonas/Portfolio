@@ -9,10 +9,10 @@ export const Menu = styled.nav`
   justify-content: space-around;
   align-items: center;
   height: 2rem;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.primaryDark};
   position: ${props => (props.sticky ? 'fixed' : 'relative')};
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.colors.test1};
+  border-bottom: 1px solid ${props => props.theme.colors.neutralDark};
   z-index: 9999;
   @media ${device.greaterThan.laptopLMin} {
     height: 2.5rem;
@@ -27,7 +27,7 @@ export const MenuContainer = styled.ul`
   right: 0;
   height: 100vh;
   top: 0vh;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.primaryDark};
   flex-direction: column;
   align-items: center;
   transform: ${props => (props.active ? 'translateY(0%)' : 'translateY(-100%)')};
@@ -65,23 +65,23 @@ export const MenuItem = styled.li`
 `
 
 export const MenuLink = styled(Link)`
-color: ${props => props.theme.colors.light};
+color: ${props => props.theme.colors.neutralLight};
 text-decoration: none;
 letter-spacing: 2px;
 font-family: 'Raleway', sans-serif;
 font-weight: ${props => props.theme.fonts.weight.bold};
 font-size: ${props => props.theme.fonts.size.large.md};
 &:hover {
-  border-bottom: 2px solid ${props => props.theme.colors.danger};
+  border-bottom: 2px solid ${props => props.theme.colors.secondaryLight};
 }
 @media ${device.greaterThan.laptopLMin} {
-  font-weight: ${props => props.theme.fonts.weight.light};
+  font-weight: ${props => props.theme.fonts.weight.normal};
   font-size: ${props => props.theme.fonts.size.md};
 }
 `
 
 export const MenuTag = styled.a`
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.neutralLight};
   text-decoration: none;
   letter-spacing: 2px;
   font-weight: ${props => props.theme.fonts.weight.bold};
@@ -89,10 +89,10 @@ export const MenuTag = styled.a`
   font-family: 'Raleway', sans-serif;
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid ${props => props.theme.colors.danger};
+    border-bottom: 2px solid ${props => props.theme.colors.secondaryLight};
   }
   @media ${device.greaterThan.laptopLMin} {
-    font-weight: ${props => props.theme.fonts.weight.light};
+    font-weight: ${props => props.theme.fonts.weight.normal};
     font-size: ${props => props.theme.fonts.size.md};
   }
 `
@@ -100,7 +100,7 @@ export const MenuTag = styled.a`
 export const MenuBrandContainer = styled.div`z-index: 9998;`
 
 export const MenuBrand = styled(ReactSVG)`
-  fill: ${props => props.theme.colors.test1};
+  fill: ${props => props.theme.colors.neutralLight};
   height: auto;
   width: 15%;
   @media ${device.greaterThan.laptopLMin} {
@@ -120,7 +120,7 @@ export const Line = styled.div`
   width: 30px;
   height: 3px;
   margin: 6px;
-  background-color: ${props => props.theme.colors.light};
+  background-color: ${props => props.theme.colors.neutralLight};
   transition: 0.6s ease;
   transform: ${props =>
     props.active && props.one

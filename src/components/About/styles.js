@@ -5,8 +5,8 @@ import { ReactSVG } from 'react-svg'
 import jonasImg from '../../media/jonas.jpg'
 
 export const Page = styled.div`
-  background: ${props => props.theme.colors.primary};
-  border-top: 1px solid ${props => props.theme.colors.test1};
+  background: ${props => props.theme.colors.primaryDark};
+  border-top: 1px solid ${props => props.theme.colors.neutralDark};
 `
 
 export const ProfilePicture = styled.img`
@@ -22,7 +22,7 @@ export const ProfileFrame = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  border: 2px solid ${props => props.theme.colors.danger};
+  border: 2px solid ${props => props.theme.colors.neutralLight};
   margin-bottom: 1rem;
   @media ${device.greaterThan.laptop} {
     height: 230px;
@@ -32,7 +32,7 @@ export const ProfileFrame = styled.div`
 
 export const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.neutralLight};
   font-size: ${props => props.theme.fonts.size.large.md};
   font-weight: ${props => props.theme.fonts.weight.bold};
   margin: 2rem 0 1rem 0;
@@ -54,7 +54,7 @@ export const Paragraph = styled.p`
   font-size: ${props => props.theme.fonts.size.sm};
   font-family: 'Raleway', sans-serif;
   font-weight: ${props => (props.iconText ? props.theme.fonts.weight.bold : props.theme.fonts.weight.light)};
-  color: ${props => (props.info ? props.theme.colors.info : props.theme.colors.light)};
+  color: ${props => (props.info ? props.theme.colors.secondaryDark : props.theme.colors.neutralLight)};
   text-align: center;
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.xl};
@@ -78,11 +78,11 @@ export const Container = styled.div`
 export const ContainerItem = styled.div``
 
 export const Icon = styled(({ signature, ...props }) => <ReactSVG {...props} />)`
-  stroke: ${props => (props.signature ? props.theme.colors.test1 : props.theme.colors.test1)};
+  stroke: ${props => (props.signature ? props.theme.colors.neutralDark : props.theme.colors.neutralDark)};
   margin: auto;
   height: auto;
   width: ${props => (props.signature ? '30%' : '80%')};
-  fill: ${props => props.theme.colors.test1};
+  fill: ${props => props.theme.colors.neutralDark};
   padding: ${props => (props.signature ? '1rem 0 1rem' : '')};
   @media ${device.greaterThan.laptop} {
     width: ${props => (props.signature ? '60%' : '100%')};

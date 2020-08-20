@@ -9,7 +9,7 @@ export const Page = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.primaryDark};
   font-family: 'Raleway', sans-serif;
   height: 100vh;
   width: 100%;
@@ -32,11 +32,11 @@ export const Title = styled.h1`
   font-size: ${props => props.theme.fonts.size.large.hl};
   font-weight: ${props => props.theme.fonts.weight.bold};
   font-style: 'Open Sans', sans-serif;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.neutralLight};
   padding: 0;
   margin: 0;
   &::selection {
-    background-color: ${props => props.theme.colors.test1};
+    background-color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.desktop} {
     font-size: ${props => props.theme.fonts.size.large.hl};
@@ -49,12 +49,12 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.h2`
   font-size: ${props => props.theme.fonts.size.large.xs};
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.neutralLight};
   padding: 0.3rem 0 0;
   margin: 0;
   font-weight: ${props => props.theme.fonts.weight.light};
   &::selection {
-    background-color: ${props => props.theme.colors.test1};
+    background-color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.desktopMin} {
     font-size: ${props => props.theme.fonts.size.large.s};
@@ -65,9 +65,9 @@ export const Subtitle = styled.h2`
 export const Span = styled.span`
   font-size: ${props => props.theme.fonts.size.large.xs};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  color: ${props => props.theme.colors.info};
+  color: ${props => props.theme.colors.secondaryLight};
   &::selection {
-    background-color: ${props => props.theme.colors.test1};
+    background-color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.s};
@@ -78,18 +78,18 @@ export const Span = styled.span`
 `
 
 export const Button = styled.button`
-  border: 1px solid ${props => props.theme.colors.light};
+  border: 1px solid ${props => props.theme.colors.neutralLight};
   border-radius: 4px;
   padding: 0.6rem;
   margin: 0.6rem 0 0;
   background: transparent;
   font-size: ${props => props.theme.fonts.size.xs};
   font-weight: ${props => props.theme.fonts.weight.light};
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.neutralLight};
   &:hover {
-    border-color: ${props => props.theme.colors.test1};
+    border-color: ${props => props.theme.colors.neutralDark};
     cursor: pointer;
-    color: ${props => props.theme.colors.test1};
+    color: ${props => props.theme.colors.neutralDark};
   }
   &:focus {
     outline: 0;

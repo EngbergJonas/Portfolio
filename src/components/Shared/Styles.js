@@ -22,7 +22,7 @@ export const CursorSpan = styled.span`
     top: -3px;
     width: 2px;
     height: 100%;
-    background-color: ${props => props.theme.colors.light};
+    background-color: ${props => props.theme.colors.neutralLight};
     animation: ${cursorAnimation} 1.2s step-end infinite;
   }
 `
