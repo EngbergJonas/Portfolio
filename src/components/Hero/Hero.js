@@ -4,6 +4,7 @@ import { CursorSpan } from '../Shared/Styles'
 import Typewriter from '../Shared/Typewriter'
 import { connect } from 'react-redux'
 import { dark } from '../Shared/Theme'
+import { withNamespaces } from 'react-i18next'
 
 const Hero = props => {
   const scrollToRef = () => props.scrollPosition.current.scrollIntoView({ behavior: 'smooth' })
@@ -37,4 +38,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Hero)
+export default connect(mapStateToProps)(withNamespaces()(Hero))

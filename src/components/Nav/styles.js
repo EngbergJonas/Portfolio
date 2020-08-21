@@ -96,7 +96,7 @@ font-size: ${props => props.theme.fonts.size.large.md};
 }
 `
 
-export const MenuTag = styled.a`
+export const MenuHyperlink = styled.a`
   color: ${props => props.theme.colors.neutralLight};
   text-decoration: none;
   letter-spacing: 2px;
@@ -105,7 +105,8 @@ export const MenuTag = styled.a`
   font-family: 'Raleway', sans-serif;
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid ${props => props.theme.colors.secondaryLight};
+    border-bottom: 2px solid ${props => (props.settingsBar ? 'none' : props.theme.colors.secondaryLight)};
+    color: ${props => (props.settingsBar ? props.theme.colors.neutralDark : 'none')};
   }
   @media ${device.greaterThan.laptopLMin} {
     font-weight: ${props => props.theme.fonts.weight.normal};
@@ -158,7 +159,8 @@ export const Line = styled.div`
 export const DropdownMenu = styled.div`
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
+  height: auto;
   border-radius: 3px;
   //background-color: ${props => props.theme.colors.primaryDark};
   margin-top: 24px;

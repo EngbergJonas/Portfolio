@@ -35,6 +35,15 @@ export const Title = styled.h1`
   color: ${props => props.theme.colors.neutralLight};
   padding: 0;
   margin: 0;
+  /* This will position the anchor tag nicely */
+  &::before {
+    display: block;
+    content: "";
+    margin-top: -7rem;
+    height: 7rem;
+    visibility: hidden;
+    pointer-events: none;
+  }
   &::selection {
     background-color: ${props => props.theme.colors.neutralDark};
   }

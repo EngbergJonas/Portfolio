@@ -11,12 +11,11 @@ import { withNamespaces } from 'react-i18next'
 
 const App = props => {
   const aboutRef = React.createRef()
-
   return (
     <Theme>
       <Router>
         <Nav />
-        <Hero scrollPosition={aboutRef} t={props.t} />
+        <Hero scrollPosition={aboutRef} />
         <About ref={aboutRef} t={props.t} />
       </Router>
     </Theme>

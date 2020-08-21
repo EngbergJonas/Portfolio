@@ -6,6 +6,8 @@ import diamond from '../../assets/media/diamond.svg'
 import signature from '../../assets/media/signature.svg'
 import jonas from '../../assets/media/jonas.jpg'
 
+import { withNamespaces } from 'react-i18next'
+
 import { Page, Paragraph, Container, Title, ContainerItem, Icon, ProfilePicture, ProfileFrame } from './styles'
 
 const About = React.forwardRef((props, ref) => {

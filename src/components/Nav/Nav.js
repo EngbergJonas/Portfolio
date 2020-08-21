@@ -6,57 +6,39 @@ import {
   MenuBrand,
   MenuItem,
   MenuLink,
-  MenuTag,
+  MenuHyperlink,
   MenuBurger,
   Line
 } from './styles'
 
 import cv from '../../assets/media/CV.pdf'
 import logo from '../../assets/media/logo.svg'
-import { connect } from 'react-redux'
-import { setTheme } from '../../reducers/themeReducer'
-import { light, dark } from '../Shared/Theme'
 
-import Dropdown from '../Nav/Dropdown'
+import Settings from './Settings'
 
-import i18n from '../../i18n'
-
-const Nav = props => {
+const Nav = () => {
   const [ open, setOpen ] = useState(false)
 
-  const changeLanguage = lng => {
-    i18n.changeLanguage(lng)
-  }
-
-  const changeTheme = () => (
-    <MenuItem>
-      <MenuTag onClick={() => props.setTheme(props.theme === dark ? light : dark)}>
-        {props.theme === dark ? 'Light' : 'Dark'}
-      </MenuTag>
-    </MenuItem>
-  )
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
     <Menu sticky>
       <MenuBrandContainer>
-        <MenuBrand src={logo} />
+        <MenuBrand onClick={() => scrollToTop()} src={logo} />
       </MenuBrandContainer>
-
       <MenuContainer active={open}>
         <MenuItem>
           <MenuLink to='#'>Projects</MenuLink>
         </MenuItem>
         <MenuItem>
-          <MenuTag href={cv} target='_blank'>
+          <MenuHyperlink href={cv} target='_blank'>
             Resume
-          </MenuTag>
+          </MenuHyperlink>
         </MenuItem>
         <MenuItem>
           <MenuLink to='#'>Contact</MenuLink>
         </MenuItem>
-        <MenuItem>
-          <Dropdown changeTheme={changeTheme()} />
-        </MenuItem>
+        <Settings />
       </MenuContainer>
 
       <MenuBurger onClick={() => setOpen(!open)}>
@@ -68,10 +50,4 @@ const Nav = props => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    theme: state.theme
-  }
-}
-
-export default connect(mapStateToProps, { setTheme })(Nav)
+export default Nav

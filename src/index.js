@@ -10,9 +10,7 @@ import store from './store'
 
 ReactDOM.render(
   <Provider store={store}>
-    <I18nextProvider i18n={i18n}>
-      <App />
-    </I18nextProvider>
+    <App />
   </Provider>,
   document.getElementById('root')
 )
