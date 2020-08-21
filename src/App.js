@@ -7,19 +7,17 @@ import Hero from './components/Hero/Hero'
 import Nav from './components/Nav/Nav'
 import About from './components/About/About'
 
-import { withNamespaces } from 'react-i18next'
-
-const App = props => {
+const App = () => {
   const aboutRef = React.createRef()
   return (
     <Theme>
       <Router>
         <Nav />
         <Hero scrollPosition={aboutRef} />
-        <About ref={aboutRef} t={props.t} />
+        <About ref={aboutRef} />
       </Router>
     </Theme>
   )
 }
 
-export default withNamespaces()(App)
+export default App

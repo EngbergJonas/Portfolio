@@ -16,9 +16,11 @@ import logo from '../../assets/media/logo.svg'
 
 import Settings from './Settings'
 
+import { useTranslation } from 'react-i18next'
+
 const Nav = () => {
   const [ open, setOpen ] = useState(false)
-
+  const { t } = useTranslation()
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
@@ -28,15 +30,15 @@ const Nav = () => {
       </MenuBrandContainer>
       <MenuContainer active={open}>
         <MenuItem>
-          <MenuLink to='#'>Projects</MenuLink>
+          <MenuLink to='#'>{t('navigation.projects')}</MenuLink>
         </MenuItem>
         <MenuItem>
           <MenuHyperlink href={cv} target='_blank'>
-            Resume
+            {t('navigation.resume')}
           </MenuHyperlink>
         </MenuItem>
         <MenuItem>
-          <MenuLink to='#'>Contact</MenuLink>
+          <MenuLink to='#'>{t('navigation.contact')}</MenuLink>
         </MenuItem>
         <Settings />
       </MenuContainer>

@@ -20,7 +20,8 @@
     "react-typewriter-hook": "^1.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "typescript": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

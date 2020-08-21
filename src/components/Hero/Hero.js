@@ -4,10 +4,13 @@ import { CursorSpan } from '../Shared/Styles'
 import Typewriter from '../Shared/Typewriter'
 import { connect } from 'react-redux'
 import { dark } from '../Shared/Theme'
-import { withNamespaces } from 'react-i18next'
+
+import { useTranslation } from 'react-i18next'
 
 const Hero = props => {
   const scrollToRef = () => props.scrollPosition.current.scrollIntoView({ behavior: 'smooth' })
+
+  const { t } = useTranslation()
 
   const rows = t => (
     <Container>
@@ -29,7 +32,7 @@ const Hero = props => {
     </Container>
   )
 
-  return <Page dark={props.theme === dark}>{rows(props.t)}</Page>
+  return <Page dark={props.theme === dark}>{rows(t)}</Page>
 }
 
 const mapStateToProps = state => {
@@ -38,4 +41,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(withNamespaces()(Hero))
+export default connect(mapStateToProps)(Hero)

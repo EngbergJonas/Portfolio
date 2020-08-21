@@ -19,6 +19,17 @@ const fadeIn = keyframes`
   to {opacity: 1;}
 `
 
+const moveRight = keyframes`
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(8px); 
+
+  }
+`
+
 export const Menu = styled.nav`
   display: flex;
   padding: 1rem 0;
@@ -107,6 +118,8 @@ export const MenuHyperlink = styled.a`
     cursor: pointer;
     border-bottom: 2px solid ${props => (props.settingsBar ? 'none' : props.theme.colors.secondaryLight)};
     color: ${props => (props.settingsBar ? props.theme.colors.neutralDark : 'none')};
+    animation: ${moveRight} 0.3s;
+    transform: translateX(8px);
   }
   @media ${device.greaterThan.laptopLMin} {
     font-weight: ${props => props.theme.fonts.weight.normal};
