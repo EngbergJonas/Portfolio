@@ -25,24 +25,38 @@ const Nav = () => {
 
   return (
     <Menu sticky>
+      {/* Brand */}
       <MenuBrandContainer>
         <MenuBrand onClick={() => scrollToTop()} src={logo} />
       </MenuBrandContainer>
       <MenuContainer active={open}>
+        {/* Projects */}
+        <MenuItem>
+          <MenuLink to='#'>{t('navigation.about')}</MenuLink>
+        </MenuItem>
+
+        {/* Projects */}
         <MenuItem>
           <MenuLink to='#'>{t('navigation.projects')}</MenuLink>
         </MenuItem>
+
+        {/* Resume */}
         <MenuItem>
           <MenuHyperlink href={cv} target='_blank'>
             {t('navigation.resume')}
           </MenuHyperlink>
         </MenuItem>
+
+        {/* Contact */}
         <MenuItem>
           <MenuLink to='#'>{t('navigation.contact')}</MenuLink>
         </MenuItem>
+
+        {/* Settings */}
         <Settings />
       </MenuContainer>
 
+      {/* Mobile Menu */}
       <MenuBurger onClick={() => setOpen(!open)}>
         <Line active={open} one />
         <Line active={open} two />

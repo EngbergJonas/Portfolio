@@ -21,15 +21,15 @@ export const Page = styled.div`
 `
 
 export const Container = styled.div`
+  padding-top: 5%;
   width: 70vw;
   align-items: center;
-  //text-align: center;
 `
 
 export const Item = styled.div`margin: 2rem 0 0;`
 
 export const Title = styled.h1`
-  font-size: ${props => props.theme.fonts.size.large.hl};
+  font-size: ${props => props.theme.fonts.size.large.lg};
   font-weight: ${props => props.theme.fonts.weight.bold};
   font-style: 'Open Sans', sans-serif;
   color: ${props => props.theme.colors.neutralLight};
@@ -39,8 +39,8 @@ export const Title = styled.h1`
   &::before {
     display: block;
     content: "";
-    margin-top: -7rem;
-    height: 7rem;
+    margin-top: -5rem;
+    height: 5rem;
     visibility: hidden;
     pointer-events: none;
   }
@@ -48,7 +48,7 @@ export const Title = styled.h1`
     background-color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.desktop} {
-    font-size: ${props => props.theme.fonts.size.large.hl};
+    font-size: ${props => props.theme.fonts.size.large.xxl};
   }
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.hl};
@@ -66,7 +66,7 @@ export const Subtitle = styled.h2`
     background-color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.desktopMin} {
-    font-size: ${props => props.theme.fonts.size.large.s};
+    font-size: ${props => props.theme.fonts.size.large.md};
     padding: 0;
   }
 `
@@ -77,9 +77,6 @@ export const Span = styled.span`
   color: ${props => props.theme.colors.secondaryLight};
   &::selection {
     background-color: ${props => props.theme.colors.neutralDark};
-  }
-  @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.large.s};
   }
   @media ${device.greaterThan.desktopMin} {
     font-size: ${props => props.theme.fonts.size.large.md};

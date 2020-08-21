@@ -23,9 +23,10 @@ export const ProfileFrame = styled.div`
   border-radius: 50%;
   border: 2px solid ${props => props.theme.colors.neutralLight};
   margin-bottom: 1rem;
+  margin-top: 1rem;
   @media ${device.greaterThan.laptop} {
-    height: 230px;
-    width: 230px;
+    height: 180px;
+    width: 180px;
   }
 `
 
@@ -39,8 +40,8 @@ export const Title = styled.h1`
   &::before {
     display: block;
     content: "";
-    margin-top: -7rem;
-    height: 7rem;
+    margin-top: -5.5rem;
+    height: 5.5rem;
     visibility: hidden;
     pointer-events: none;
   }

@@ -32,31 +32,24 @@ export const dark = {
   colors: {
     primaryDark: '#1A1A1D', //black
     primaryLight: '#4E4E50', //gray
-    secondaryDark: '#6F2242', //wine-red
-    secondaryLight: '#950740', //wine-red-lighter
-    secondayPale: '#C3073F', //wine-red-lightest
+    secondaryDark: '#6F2242', //red-dark
+    secondaryLight: '#950740', //red-lighter
+    secondayPale: '#C3073F', //red-lightest
     neutralLight: '#FFFFFF', //white
     neutralDark: '#66FCF1' //cyan
   },
   fonts
 }
 
-/*
-#EAE7DC white
-#D8C3A5 beige
-#8E8D8A gray
-#E98074 light red
-#E85A4F red
-*/
 export const light = {
   colors: {
     primaryDark: '#EAE7DC', //white
     primaryLight: '#D8C3A5', //beige
     secondaryDark: '#E85A4F', //red
     secondaryLight: '#E98074', //light-red
-    secondaryPale: '#E98074',
+    secondaryPale: '#E98074', //light-red (again)
     neutralLight: '#686764', //dark-gray
-    neutralDark: '#E85A4F'
+    neutralDark: '#E85A4F' //red (again)
   },
   fonts
 }

@@ -12,12 +12,21 @@ const Hero = props => {
 
   const { t } = useTranslation()
 
+  const greetVisitor = () => {
+    const time = parseInt(new Date().toLocaleTimeString('fi-FI').slice(0, 2))
+    return time < 12
+      ? t('titles.frontpage.greeting.morning')
+      : time < 17 ? t('titles.frontpage.greeting.afternoon') : t('titles.frontpage.greeting.evening')
+  }
+
   const rows = t => (
     <Container>
-      <Title>{t('titles.frontpage.row1')}</Title>
+      <Title>{greetVisitor()}</Title>
+
       <Subtitle>
         {t('titles.frontpage.row2')} <Span>{t('titles.frontpage.name')}</Span>
       </Subtitle>
+
       <Subtitle>
         {t('titles.frontpage.row3')}{' '}
         <Span>
@@ -26,12 +35,12 @@ const Hero = props => {
           </CursorSpan>
         </Span>
       </Subtitle>
+
       <Item>
         <Button onClick={() => scrollToRef()}>{t('buttons.about')}</Button>
       </Item>
     </Container>
   )
-
   return <Page dark={props.theme === dark}>{rows(t)}</Page>
 }
 

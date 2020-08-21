@@ -32,14 +32,13 @@ const moveRight = keyframes`
 
 export const Menu = styled.nav`
   display: flex;
-  padding: 1rem 0;
-  justify-content: space-around;
+  padding: 0.6rem 0;
   align-items: center;
   height: 2rem;
   background-color: ${props => props.theme.colors.primaryDark};
   position: ${props => (props.sticky ? 'fixed' : 'relative')};
   width: 100%;
-  border-bottom: 1px solid ${props => props.theme.colors.neutralDark};
+  border-bottom: 1.5px solid ${props => props.theme.colors.neutralDark};
   z-index: 9999;
   @media ${device.greaterThan.laptopLMin} {
     height: 2.5rem;
@@ -53,11 +52,11 @@ export const MenuContainer = styled.ul`
   width: 100%;
   right: 0;
   height: 100vh;
+  align-items: center;
   top: 0vh;
   background-color: ${props => props.theme.colors.primaryDark};
   flex-direction: column;
-  align-items: center;
-  transform: ${props => (props.active ? 'translateY(0%)' : 'translateY(-100%)')};
+  transform: ${props => (props.active ? 'translateX(0%)' : 'translateX(100%)')};
   transition: transform 0.5s ease-in;
 
   @media ${device.greaterThan.laptopLMin} {
@@ -65,12 +64,35 @@ export const MenuContainer = styled.ul`
     position: relative;
     flex-direction: row;
     height: 0vh;
-    width: 40%;
+    width: 50%;
+    padding-left: 14%;
+    padding-right: 0%;
+    align-items: center;
+    justify-content: space-around;
   }
   @media ${device.greaterThan.laptopL} {
     width: 35%;
   }
 `
+
+export const DropdownMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 8rem;
+  height: auto;
+  border-top: none;
+  animation: ${fadeIn} 0.3s;
+  position: absolute;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  @media ${device.greaterThan.laptopLMin} {
+    margin-top: 24px;
+    padding-top: 20px;
+    align-items: flex-start;
+  }
+`
+
 export const MenuItem = styled.li`
   list-style: none;
   display: inline-block;
@@ -94,16 +116,18 @@ export const MenuItem = styled.li`
 export const MenuLink = styled(Link)`
 color: ${props => props.theme.colors.neutralLight};
 text-decoration: none;
-letter-spacing: 2px;
+letter-spacing: 1px;
 font-family: 'Raleway', sans-serif;
 font-weight: ${props => props.theme.fonts.weight.bold};
-font-size: ${props => props.theme.fonts.size.large.md};
+font-size: ${props => props.theme.fonts.size.large.xs};
 &:hover {
-  border-bottom: 2px solid ${props => props.theme.colors.secondaryLight};
+  color: ${props => props.theme.colors.neutralDark};
+  animation: ${enlarge} 0.2s;
+  transform: scale(1.1);
 }
 @media ${device.greaterThan.laptopLMin} {
   font-weight: ${props => props.theme.fonts.weight.normal};
-  font-size: ${props => props.theme.fonts.size.md};
+  font-size: ${props => props.theme.fonts.size.s};
 }
 `
 
@@ -112,27 +136,34 @@ export const MenuHyperlink = styled.a`
   text-decoration: none;
   letter-spacing: 2px;
   font-weight: ${props => props.theme.fonts.weight.bold};
-  font-size: ${props => props.theme.fonts.size.large.md};
+  font-size: ${props => (props.settingsBar ? props.theme.fonts.size.large.xxs : props.theme.fonts.size.large.xs)};
   font-family: 'Raleway', sans-serif;
+  //transform: ${props => (props.active ? 'translate(0%)' : 'translate(-200px, -230px)')};
+  transition: transform 0.5s ease-in;
   &:hover {
     cursor: pointer;
-    border-bottom: 2px solid ${props => (props.settingsBar ? 'none' : props.theme.colors.secondaryLight)};
-    color: ${props => (props.settingsBar ? props.theme.colors.neutralDark : 'none')};
-    animation: ${moveRight} 0.3s;
-    transform: translateX(8px);
+    color: ${props => props.theme.colors.neutralDark};
   }
   @media ${device.greaterThan.laptopLMin} {
     font-weight: ${props => props.theme.fonts.weight.normal};
-    font-size: ${props => props.theme.fonts.size.md};
+    font-size: ${props => props.theme.fonts.size.s};
+    &:hover {
+      animation: ${moveRight} 0.3s;
+      transform: translateX(8px);
+    }
   }
 `
 
 export const MenuBrandContainer = styled.div`
   z-index: 9998;
-  width: 40px;
-  display: inline-block;
+  width: 36px;
+  display: block;
+  position: relative;
+  padding-left: 48%;
   @media ${device.greaterThan.laptopLMin} {
+    padding: 6%;
     width: 40px;
+    position: absolute;
   }
 `
 
@@ -141,9 +172,11 @@ export const MenuBrand = styled(ReactSVG)`
   height: auto;
   position: relative;
   width: 100%;
+
   &:hover {
     cursor: pointer;
-    animation: ${enlarge} 0.3s linear;
+    animation: ${enlarge};
+    transition: transform 120ms ease-in-out; 
     fill: ${props => props.theme.colors.neutralDark};
     transform: scale(1.1);
   }
@@ -152,6 +185,9 @@ export const MenuBrand = styled(ReactSVG)`
 export const MenuBurger = styled.div`
   cursor: pointer;
   z-index: 10;
+  position: absolute;
+  right: 0;
+  padding-right: 6%;
   @media ${device.greaterThan.laptopLMin} {
     display: none;
   }
@@ -168,17 +204,4 @@ export const Line = styled.div`
       ? 'rotate(-45deg) translate(-6px, 7px)'
       : props.active && props.three ? 'rotate(45deg) translate(-6px, -7px)' : ''};
   opacity: ${props => (props.active && props.two ? 0 : 1)};
-`
-export const DropdownMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  border-radius: 3px;
-  //background-color: ${props => props.theme.colors.primaryDark};
-  margin-top: 24px;
-  border-top: none;
-  padding-top: 20px;
-  animation: ${fadeIn} 0.3s;
-  position: absolute;
 `

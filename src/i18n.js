@@ -5,6 +5,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 import translationEN from './assets/locales/en.json'
 import translationFI from './assets/locales/fi.json'
+import translationSE from './assets/locales/se.json'
 
 const resources = {
   en: {
@@ -12,6 +13,9 @@ const resources = {
   },
   fi: {
     translation: translationFI
+  },
+  se: {
+    translation: translationSE
   }
 }
 
@@ -21,7 +25,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
   debug: true,
 
   interpolation: {
-    escapeValue: false // not needed for react as it escapes by default
+    escapeValue: false
   }
 })
 

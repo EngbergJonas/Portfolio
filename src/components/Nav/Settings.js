@@ -53,9 +53,10 @@ const Settings = props => {
       <MenuHyperlink onClick={() => setOpen(!open)}>{t('navigation.settings')}</MenuHyperlink>
       {open ? (
         <DropdownMenu ref={dropdownRef}>
-          {setLanguage('en', 'In English')}
-          {setLanguage('fi', 'Suomeksi')}
           {setTheme()}
+          {setLanguage('en', t('settings.en'))}
+          {setLanguage('fi', t('settings.fi'))}
+          {setLanguage('se', t('settings.se'))}
         </DropdownMenu>
       ) : null}
     </MenuItem>
