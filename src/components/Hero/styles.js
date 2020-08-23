@@ -57,7 +57,7 @@ export const Title = styled.h1`
 `
 
 export const Subtitle = styled.h2`
-  font-size: ${props => props.theme.fonts.size.large.xs};
+  font-size: ${props => props.theme.fonts.size.s};
   color: ${props => props.theme.colors.neutralLight};
   padding: 0.3rem 0 0;
   margin: 0;
@@ -65,20 +65,20 @@ export const Subtitle = styled.h2`
   &::selection {
     background-color: ${props => props.theme.colors.neutralDark};
   }
-  @media ${device.greaterThan.desktopMin} {
+  @media ${device.greaterThan.laptopLMin} {
     font-size: ${props => props.theme.fonts.size.large.md};
     padding: 0;
   }
 `
 
 export const Span = styled.span`
-  font-size: ${props => props.theme.fonts.size.large.xs};
+  font-size: ${props => props.theme.fonts.size.s};
   font-weight: ${props => props.theme.fonts.weight.bold};
   color: ${props => props.theme.colors.secondaryLight};
   &::selection {
     background-color: ${props => props.theme.colors.neutralDark};
   }
-  @media ${device.greaterThan.desktopMin} {
+  @media ${device.greaterThan.laptopLMin} {
     font-size: ${props => props.theme.fonts.size.large.md};
   }
 `

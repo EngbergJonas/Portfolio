@@ -4,15 +4,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Theme from './components/Shared/Theme'
 
 import Hero from './components/Hero/Hero'
-import Nav from './components/Nav/Nav'
+import Menu from './components/Menu/Menu'
 import About from './components/About/About'
+
+import './index.css'
 
 const App = () => {
   const aboutRef = React.createRef()
   return (
     <Theme>
       <Router>
-        <Nav />
+        <Menu />
         <Hero scrollPosition={aboutRef} />
         <About ref={aboutRef} />
       </Router>
