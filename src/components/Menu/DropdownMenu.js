@@ -55,7 +55,9 @@ const DropdownMenu = props => {
           onEnter={calcHeight}
         >
           <div className='menu'>
-            <DropdownItem handleChange={() => handleMenuChange('languageSelection')}>Languages</DropdownItem>
+            <DropdownItem handleChange={() => handleMenuChange('languageSelection')}>
+              {t('settings.languages')}
+            </DropdownItem>
             <DropdownItem handleChange={() => handleSetTheme()}>
               {props.theme === dark ? t('settings.light') : t('settings.dark')}
             </DropdownItem>
@@ -77,7 +79,7 @@ const DropdownMenu = props => {
             <DropdownItem handleChange={() => handleSetLanguage('en')}>{t('settings.en')}</DropdownItem>
             <DropdownItem handleChange={() => handleSetLanguage('fi')}>{t('settings.fi')}</DropdownItem>
             <DropdownItem handleChange={() => handleSetLanguage('se')}>{t('settings.se')}</DropdownItem>
-            <DropdownItem handleChange={() => handleMenuChange('main')}>Back</DropdownItem>
+            <DropdownItem handleChange={() => handleMenuChange('main')}>{t('settings.back')}</DropdownItem>
           </div>
         </CSSTransition>
       </DropdownContainer>

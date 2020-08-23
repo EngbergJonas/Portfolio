@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import { HashLink as Link } from 'react-router-hash-link'
 import device from '../../device'
 
@@ -6,19 +6,15 @@ const moveRight = keyframes`
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(8px); 
-
   }
 `
 
 const slideIn = keyframes`
-
   from {
     transform: translateX(0%);
   }
-
   to {
     transform: translateX(-55%); 
   }
@@ -42,8 +38,53 @@ const spin = keyframes`
   to {
     transform: rotate(180deg);
   }
-
 `
+const centerFlexNoDecor = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+`
+
+const navTextStyle = css`
+  font-weight: ${props => props.theme.fonts.weight.normal};
+  font-size: ${props => props.theme.fonts.size.md};
+  color: ${props => props.theme.colors.neutralLight};
+`
+
+const desktopLinkStyles = css`
+  ${navTextStyle};
+  ${centerFlexNoDecor};
+  &:hover {
+    cursor: pointer;
+    color: ${props => props.theme.colors.neutralDark};
+  }
+`
+
+const mobileLinkStyles = css`
+  ${navTextStyle};
+  ${centerFlexNoDecor};
+  height: 50px;
+  border-radius: 8px;
+  padding: 0.5rem;
+  justify-content: flex-start;
+  &:hover {
+    cursor: pointer;
+    color: ${props => props.theme.colors.neutralDark};
+    animation: ${moveRight} 300ms ease;
+    transform: translateX(8px);
+  }
+`
+
+//Desktop Hyperlink
+export const NavHyperlink = styled.a`${desktopLinkStyles};`
+//Desktop Link
+export const NavLink = styled(Link)`${desktopLinkStyles};`
+
+//Mobile HyperLink
+export const DropdownMenuItem = styled.a`${mobileLinkStyles};`
+//Mobile Link
+export const DropdownMenuLink = styled(Link)`${mobileLinkStyles};`
 
 //Navigation Bar
 export const Navbar = styled.nav`
@@ -54,7 +95,9 @@ export const Navbar = styled.nav`
   padding: 0 1rem;
   border-bottom: 1.5px solid ${props => props.theme.colors.neutralDark};
   z-index: 999;
+  font-family: 'Raleway', sans-serif;
 `
+
 //List inside navigation bar
 export const Nav = styled.ul`
   list-style: none;
@@ -66,21 +109,20 @@ export const Nav = styled.ul`
   justify-content: flex-start;
 `
 
-export const NavContainerMain = styled.li`
+//Items that disappear on mobile
+export const NavContainerDesktop = styled.li`
   display: none;
   @media ${device.greaterThan.laptopLMin} {
     width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    ${centerFlexNoDecor};
   }
 `
 
-//Container for logo and links in navigation bar
+//Items that disappear on dektop
 export const NavContainer = styled.li`
   width: 50%;
-  display: flex;
-  align-items: center;
+  ${centerFlexNoDecor};
+  /* Logo goes to middle in mobile */
   justify-content: flex-end;
   @media ${device.greaterThan.laptopLMin} {
     width: 10%;
@@ -91,43 +133,11 @@ export const NavContainer = styled.li`
 //Container for settings button
 export const NavButtonContainer = styled.li`
   width: 40%;
-  display: flex;
-  align-items: center;
+  ${centerFlexNoDecor};
+  /* Button goes to the right end of navbar */
   justify-content: flex-end;
   @media ${device.greaterThan.laptopLMin} {
     width: 43%;
-  }
-`
-
-//Hyperlink
-export const NavHyperlink = styled.a`
-  font-weight: ${props => props.theme.fonts.weight.normal};
-  font-size: ${props => props.theme.fonts.size.md};
-  color: ${props => props.theme.colors.neutralLight};
-  font-family: 'Raleway', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
-  }
-`
-
-//Router Link
-export const NavLink = styled(Link)`
-  font-weight: ${props => props.theme.fonts.weight.normal};
-  font-size: ${props => props.theme.fonts.size.md};
-  color: ${props => props.theme.colors.neutralLight};
-  font-family: 'Raleway', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
   }
 `
 
@@ -139,9 +149,7 @@ export const IconButton = styled.a`
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${centerFlexNoDecor};
   &:hover {
     background-color: transparent;
     cursor: pointer;
@@ -158,7 +166,7 @@ export const IconButton = styled.a`
     &:hover {
       background-color: ${props => props.theme.colors.neutralDark};
       animation-name: ${spin};
-      animation-duration: 600ms; /* same for all */
+      animation-duration: 600ms;
       transform: rotate(180deg);
     }
   }
@@ -204,47 +212,4 @@ export const DropdownContainer = styled.div`
   padding: 1rem;
   overflow: hidden;
   transition: height 200ms ease;
-`
-
-//Dropdown hyperlink
-export const DropdownMenuItem = styled.a`
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  transition: background 500ms;
-  padding: 0.5rem;
-  width: auto;
-  font-weight: ${props => props.theme.fonts.weight.normal};
-  font-size: ${props => props.theme.fonts.size.md};
-  color: ${props => props.theme.colors.neutralLight};
-  font-family: 'Raleway', sans-serif;
-  &:hover {
-    cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
-    animation: ${moveRight} 300ms ease;
-    transform: translateX(8px);
-  }
-`
-
-//Dropdown link
-export const DropdownMenuLink = styled(Link)`
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  transition: background 500ms;
-  padding: 0.5rem;
-  width: auto;
-  font-weight: ${props => props.theme.fonts.weight.normal};
-  font-size: ${props => props.theme.fonts.size.md};
-  color: ${props => props.theme.colors.neutralLight};
-  font-family: 'Raleway', sans-serif;
-  text-decoration: none;
-  &:hover {
-    cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
-    animation: ${moveRight} 300ms ease;
-    transform: translateX(8px);
-  }
 `

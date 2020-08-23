@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Navbar, Nav, NavContainer, Brand, NavHyperlink, NavLink, NavContainerMain } from './styles.js'
+import { Navbar, Nav, NavContainer, Brand, NavHyperlink, NavLink, NavContainerDesktop } from './styles.js'
 import DropdownMenu from './DropdownMenu'
 
 import { ReactComponent as Logo } from '../../assets/media/logo.svg'
@@ -22,25 +22,25 @@ const Menu = () => {
       <Nav>
         <NavBrand handleChange={() => scrollToTop()} icon={<Logo />} />
 
-        <NavContainerMain>
+        <NavContainerDesktop>
           <NavLink smooth to='#about'>
             {t('navigation.about')}
           </NavLink>
-        </NavContainerMain>
+        </NavContainerDesktop>
 
-        <NavContainerMain>
+        <NavContainerDesktop>
           <NavHyperlink>{t('navigation.projects')}</NavHyperlink>
-        </NavContainerMain>
+        </NavContainerDesktop>
 
-        <NavContainerMain>
+        <NavContainerDesktop>
           <NavHyperlink href={cv} target='_blank'>
             {t('navigation.resume')}
           </NavHyperlink>
-        </NavContainerMain>
+        </NavContainerDesktop>
 
-        <NavContainerMain>
+        <NavContainerDesktop>
           <NavHyperlink>{t('navigation.contact')}</NavHyperlink>
-        </NavContainerMain>
+        </NavContainerDesktop>
 
         <DropdownMenu />
       </Nav>
