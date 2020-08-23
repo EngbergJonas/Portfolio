@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { MenuHyperlink, DropdownMenu, MenuItem } from './styles'
-import i18n from '../../i18n'
+import i18n from '../../../i18n'
 
 import { connect } from 'react-redux'
-import { setTheme } from '../../reducers/themeReducer'
-import { light, dark } from '../Shared/Theme'
+import { setTheme } from '../../../reducers/themeReducer'
+import { light, dark } from '../../Shared/Theme'
 
 import { useTranslation } from 'react-i18next'
 

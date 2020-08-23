@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
-import device from '../../device'
+import device from '../../../device'
 import { ReactSVG } from 'react-svg'
 
 const enlarge = keyframes`

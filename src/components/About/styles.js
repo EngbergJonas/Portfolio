@@ -1,11 +1,9 @@
-import React from 'react'
 import styled from 'styled-components'
 import device from '../../device'
-import { ReactSVG } from 'react-svg'
 
 export const Page = styled.div`
   background: ${props => props.theme.colors.primaryDark};
-  border-top: 1px solid ${props => props.theme.colors.neutralDark};
+  border-top: 1.5px solid ${props => props.theme.colors.neutralDark};
 `
 
 export const ProfilePicture = styled.img`
@@ -16,15 +14,17 @@ export const ProfilePicture = styled.img`
 `
 
 export const ProfileFrame = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid ${props => props.theme.colors.neutralLight};
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  @media ${device.greaterThan.laptop} {
+  @media ${device.greaterThan.tabletMin} {
+    height: 110px;
+    width: 110px;
+  }
+  @media ${device.greaterThan.tablet} {
     height: 180px;
     width: 180px;
   }
@@ -35,7 +35,7 @@ export const Title = styled.h1`
   color: ${props => props.theme.colors.neutralLight};
   font-size: ${props => props.theme.fonts.size.large.md};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  margin: 2rem 0 1rem 0;
+  margin: 2.5rem 0 0 0;
   /* This will position the anchor tag nicely */
   &::before {
     display: block;
@@ -62,10 +62,11 @@ export const Paragraph = styled.p`
 `
 
 export const Container = styled.div`
-  display: flex;
   margin: 0 auto;
+  display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 1rem;
   width: ${props => (props.text ? '80%' : '100%')};
   @media ${device.greaterThan.laptopMin} {
     width: ${props => (props.text ? '50%' : '100%')};
@@ -75,16 +76,26 @@ export const Container = styled.div`
   }
 `
 
-export const ContainerItem = styled.div``
+export const ContainerItem = styled.div`
+  & svg {
+    stroke: ${props => props.theme.colors.neutralDark};
+    height: auto;
+    width: 100%;
+    fill: ${props => props.theme.colors.neutralDark};
+  }
+`
 
-export const Icon = styled(({ signature, ...props }) => <ReactSVG {...props} />)`
-  stroke: ${props => (props.signature ? props.theme.colors.neutralDark : props.theme.colors.neutralDark)};
-  margin: auto;
-  height: auto;
-  width: ${props => (props.signature ? '30%' : '80%')};
-  fill: ${props => props.theme.colors.neutralDark};
-  padding: ${props => (props.signature ? '1rem 0 1rem' : '')};
-  @media ${device.greaterThan.laptop} {
-    width: ${props => (props.signature ? '60%' : '100%')};
+export const ContainerItemSignature = styled.div`
+  text-align: center;
+  & svg {
+    stroke: ${props => props.theme.colors.neutralDark};
+    margin: auto;
+    height: auto;
+    width: 40%;
+    fill: ${props => props.theme.colors.neutralDark};
+    padding: 1rem 0 1rem;
+    @media ${device.greaterThan.laptop} {
+      width: 60%;
     }
+  }
 `
