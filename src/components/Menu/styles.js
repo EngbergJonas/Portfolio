@@ -25,6 +25,27 @@ const slideIn = keyframes`
   }
 `
 
+const shrink = keyframes`
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0.9);
+    transform-origin: 50% 50%;
+  }
+`
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+
+`
+
 //Navigation Bar
 export const Navbar = styled.nav`
   height: 60px;
@@ -46,56 +67,67 @@ export const Nav = styled.ul`
   justify-content: flex-start;
 `
 
+export const NavContainerMain = styled.li`
+  display: none;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
 //Container for logo and links in navigation bar
 export const NavContainer = styled.li`
-  width: 10%;
+  width: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 10%;
+    justify-content: center;
+  }
 `
 
 //Container for settings button
 export const NavButtonContainer = styled.li`
-  width: 43%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 43%;
+  }
 `
 
 //Hyperlink
 export const NavHyperlink = styled.a`
-  display: none;
-  @media ${device.greaterThan.laptopLMin} {
-    font-weight: ${props => props.theme.fonts.weight.normal};
-    font-size: ${props => props.theme.fonts.size.md};
-    color: ${props => props.theme.colors.neutralLight};
-    font-family: 'Raleway', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      cursor: pointer;
-      color: ${props => props.theme.colors.neutralDark};
-    }
+  font-weight: ${props => props.theme.fonts.weight.normal};
+  font-size: ${props => props.theme.fonts.size.md};
+  color: ${props => props.theme.colors.neutralLight};
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    cursor: pointer;
+    color: ${props => props.theme.colors.neutralDark};
   }
 `
 
 //Router Link
 export const NavLink = styled(Link)`
-    display: ${props => (props.mobile ? 'block' : 'none')};
-  @media ${device.greaterThan.laptopLMin} {
-    font-weight: ${props => props.theme.fonts.weight.normal};
-    font-size: ${props => props.theme.fonts.size.md};
-    color: ${props => props.theme.colors.neutralLight};
-    font-family: 'Raleway', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    &:hover {
-      cursor: pointer;
-      color: ${props => props.theme.colors.neutralDark};
-    }
+  font-weight: ${props => props.theme.fonts.weight.normal};
+  font-size: ${props => props.theme.fonts.size.md};
+  color: ${props => props.theme.colors.neutralLight};
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: ${props => props.theme.colors.neutralDark};
   }
 `
 
@@ -103,21 +135,32 @@ export const NavLink = styled(Link)`
 export const IconButton = styled.a`
   width: calc(60px * 0.5);
   height: calc(60px * 0.5);
-  background-color: ${props => props.theme.colors.neutralLight};
+  background-color: transparent;
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   &:hover {
-    background-color: ${props => props.theme.colors.neutralDark};
+    background-color: transparent;
     cursor: pointer;
   }
   & svg {
     width: calc(60px);
     height: calc(60px);
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+  @media ${device.greaterThan.laptopLMin} {
+    background-color: ${props => props.theme.colors.neutralLight};
+    &:hover {
+      background-color: ${props => props.theme.colors.neutralDark};
+      animation-name: ${spin};
+      animation-duration: 600ms; /* same for all */
+      transform: rotate(180deg);
+    }
   }
 `
 
@@ -135,6 +178,15 @@ export const Brand = styled(IconButton)`
     height: calc(60px);
     &:hover{
       fill: ${props => props.theme.colors.neutralDark};
+      animation: ${shrink} 300ms ease;
+    }
+  }
+    @media ${device.greaterThan.laptopLMin} {
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+      animation: none !important;
+      transform: rotate(0deg);
     }
   }
 `
@@ -167,7 +219,6 @@ export const DropdownMenuItem = styled.a`
   font-size: ${props => props.theme.fonts.size.md};
   color: ${props => props.theme.colors.neutralLight};
   font-family: 'Raleway', sans-serif;
-
   &:hover {
     cursor: pointer;
     color: ${props => props.theme.colors.neutralDark};

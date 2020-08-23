@@ -13,7 +13,12 @@ import DropdownItem from './DropdownItem'
 
 import { useWindowDimensions } from '../../scripts'
 
-import { HashLink as Link } from 'react-router-hash-link'
+// React Component
+import Burger from '@animated-burgers/burger-rotate'
+// don't forget the styles
+import '@animated-burgers/burger-rotate/dist/styles.css'
+import DropdownToggler from './DropdownToggler'
+import { ReactComponent as Settings } from '../../assets/media/settings.svg'
 
 const DropdownMenu = props => {
   const [ activeMenu, setActiveMenu ] = useState('main')
@@ -56,7 +61,7 @@ const DropdownMenu = props => {
 
   const mobileRows = () => (
     <div style={{ display: width > mobileBreakpoint ? 'none' : 'block' }}>
-      <DropdownMenuLink mobile smooth to='#about'>
+      <DropdownMenuLink smooth to='#about'>
         {t('navigation.about')}
       </DropdownMenuLink>
       <DropdownItem>{t('navigation.projects')}</DropdownItem>
@@ -66,42 +71,48 @@ const DropdownMenu = props => {
   )
 
   return (
-    <DropdownContainer ref={dropdownRef} style={{ height: menuHeight }}>
-      {/* Transition for main container */}
-      <CSSTransition
-        in={activeMenu === 'main'}
-        unmountOnExit
-        timeout={200}
-        classNames='menu-primary'
-        onEnter={calcHeight}
-      >
-        <div className='menu'>
-          <DropdownItem handleChange={() => handleMenuChange('languageSelection')}>Languages</DropdownItem>
-          <DropdownItem handleChange={() => handleSetTheme()}>
-            {props.theme === dark ? t('settings.light') : t('settings.dark')}
-          </DropdownItem>
+    <DropdownToggler
+      open={open}
+      setOpen={setOpen}
+      icon={width < mobileBreakpoint ? <Burger isOpen={open} /> : <Settings />}
+    >
+      <DropdownContainer ref={dropdownRef} style={{ height: menuHeight }}>
+        {/* Transition for main container */}
+        <CSSTransition
+          in={activeMenu === 'main'}
+          unmountOnExit
+          timeout={200}
+          classNames='menu-primary'
+          onEnter={calcHeight}
+        >
+          <div className='menu'>
+            <DropdownItem handleChange={() => handleMenuChange('languageSelection')}>Languages</DropdownItem>
+            <DropdownItem handleChange={() => handleSetTheme()}>
+              {props.theme === dark ? t('settings.light') : t('settings.dark')}
+            </DropdownItem>
 
-          {/* Mobile Nav Links when query breaks */}
-          {mobileRows()}
-        </div>
-      </CSSTransition>
+            {/* Mobile Nav Links when query breaks */}
+            {mobileRows()}
+          </div>
+        </CSSTransition>
 
-      {/* Transition for language container */}
-      <CSSTransition
-        in={activeMenu === 'languageSelection'}
-        unmountOnExit
-        timeout={200}
-        classNames='menu-secondary'
-        onEnter={calcHeight}
-      >
-        <div className='menu'>
-          <DropdownItem handleChange={() => handleSetLanguage('en')}>{t('settings.en')}</DropdownItem>
-          <DropdownItem handleChange={() => handleSetLanguage('fi')}>{t('settings.fi')}</DropdownItem>
-          <DropdownItem handleChange={() => handleSetLanguage('se')}>{t('settings.se')}</DropdownItem>
-          <DropdownItem handleChange={() => handleMenuChange('main')}>Back</DropdownItem>
-        </div>
-      </CSSTransition>
-    </DropdownContainer>
+        {/* Transition for language container */}
+        <CSSTransition
+          in={activeMenu === 'languageSelection'}
+          unmountOnExit
+          timeout={200}
+          classNames='menu-secondary'
+          onEnter={calcHeight}
+        >
+          <div className='menu'>
+            <DropdownItem handleChange={() => handleSetLanguage('en')}>{t('settings.en')}</DropdownItem>
+            <DropdownItem handleChange={() => handleSetLanguage('fi')}>{t('settings.fi')}</DropdownItem>
+            <DropdownItem handleChange={() => handleSetLanguage('se')}>{t('settings.se')}</DropdownItem>
+            <DropdownItem handleChange={() => handleMenuChange('main')}>Back</DropdownItem>
+          </div>
+        </CSSTransition>
+      </DropdownContainer>
+    </DropdownToggler>
   )
 }
 
