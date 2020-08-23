@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CSSTransition } from 'react-transition-group'
 
-import { DropdownContainer, DropdownMenuLink } from './styles.js'
+import { DropdownContainer, DropdownMenuLink, NavButtonContainer, IconButton } from './styles.js'
 import './dropdown.css'
 import i18n from '../../i18n'
 import { connect } from 'react-redux'
@@ -17,14 +17,18 @@ import { useWindowDimensions } from '../../scripts'
 import Burger from '@animated-burgers/burger-rotate'
 // don't forget the styles
 import '@animated-burgers/burger-rotate/dist/styles.css'
-import DropdownToggler from './DropdownToggler'
+//import DropdownToggler from './DropdownToggler'
 import { ReactComponent as Settings } from '../../assets/media/settings.svg'
+
+import { useToggle } from '../../hooks/index'
+
+import DropdownToggler from './DropdownToggler'
 
 const DropdownMenu = props => {
   const [ activeMenu, setActiveMenu ] = useState('main')
   const [ menuHeight, setMenuHeight ] = useState(null)
-  const [ open, setOpen ] = useState(false)
-  const { height, width } = useWindowDimensions()
+  const [ open, setOpen ] = useToggle(false)
+  const { width } = useWindowDimensions()
   const mobileBreakpoint = 1025
   const { t } = useTranslation()
   const dropdownRef = useRef(null)
@@ -34,7 +38,7 @@ const DropdownMenu = props => {
       () => {
         const handleClickOutside = event => {
           if (ref.current && !ref.current.contains(event.target)) {
-            setOpen(false)
+            setOpen()
           }
         }
         document.addEventListener('mousedown', handleClickOutside)
@@ -73,7 +77,7 @@ const DropdownMenu = props => {
   return (
     <DropdownToggler
       open={open}
-      setOpen={setOpen}
+      handleChange={setOpen}
       icon={width < mobileBreakpoint ? <Burger isOpen={open} /> : <Settings />}
     >
       <DropdownContainer ref={dropdownRef} style={{ height: menuHeight }}>
