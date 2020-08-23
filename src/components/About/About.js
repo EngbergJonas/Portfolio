@@ -30,7 +30,9 @@ const About = React.forwardRef((props, ref) => {
       {/* Title */}
       <Container>
         <ContainerItem>
-          <Title ref={ref}>{t('titles.about')}</Title>
+          <Title ref={ref} id='about'>
+            {t('titles.about')}
+          </Title>
         </ContainerItem>
       </Container>
 
