@@ -56,7 +56,7 @@ export const Title = styled.h1`
   }
 `
 
-export const Subtitle = styled.h2`
+export const Subtitle = styled.div`
   font-size: ${props => props.theme.fonts.size.s};
   color: ${props => props.theme.colors.neutralLight};
   padding: 0.3rem 0 0;
@@ -71,10 +71,13 @@ export const Subtitle = styled.h2`
   }
 `
 
-export const Span = styled.span`
+export const Highlight = styled.span`
   font-size: ${props => props.theme.fonts.size.s};
   font-weight: ${props => props.theme.fonts.weight.bold};
   color: ${props => props.theme.colors.secondaryLight};
+  padding: 0;
+  margin: 0;
+  display: inline;
   &::selection {
     background-color: ${props => props.theme.colors.neutralDark};
   }

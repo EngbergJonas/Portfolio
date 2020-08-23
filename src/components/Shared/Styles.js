@@ -11,7 +11,7 @@ const cursorAnimation = keyframes`
     opacity: 0;
   }
 `
-export const CursorSpan = styled.span`
+export const Cursor = styled.span`
   display: inline-block;
   position: relative;
   &:after {
