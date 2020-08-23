@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { NavButtonContainer, IconButton } from './styles.js'
+import { useCloseOnClickOutside, useWindowDimensions } from '../../hooks/index'
+import Burger from '@animated-burgers/burger-rotate'
+import '@animated-burgers/burger-rotate/dist/styles.css'
+import { ReactComponent as Settings } from '../../assets/media/settings.svg'
 
 const DropdownToggler = props => {
-  console.log(props.open)
+  const dropdownRef = useRef(null)
+  const [ open, setOpen ] = useCloseOnClickOutside(dropdownRef, false)
+  const { width } = useWindowDimensions()
+  const mobileBreakpoint = 1025
+
   return (
     <NavButtonContainer>
-      <IconButton onClick={props.handleChange}>{props.icon}</IconButton>
-      {props.open && props.children}
+      <div ref={dropdownRef}>
+        <IconButton onClick={setOpen}>{width < mobileBreakpoint ? <Burger isOpen={open} /> : <Settings />}</IconButton>
+        {open && props.children}
+      </div>
     </NavButtonContainer>
   )
 }

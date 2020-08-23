@@ -5,6 +5,7 @@ import { Navbar, Nav, NavContainer, Brand, NavHyperlink, NavLink, NavContainerMa
 import DropdownMenu from './DropdownMenu'
 
 import { ReactComponent as Logo } from '../../assets/media/logo.svg'
+import cv from '../../assets/media/CV.pdf'
 
 const NavBrand = props => (
   <NavContainer onClick={props.handleChange}>
@@ -32,7 +33,9 @@ const Menu = () => {
         </NavContainerMain>
 
         <NavContainerMain>
-          <NavHyperlink>{t('navigation.resume')}</NavHyperlink>
+          <NavHyperlink href={cv} target='_blank'>
+            {t('navigation.resume')}
+          </NavHyperlink>
         </NavContainerMain>
 
         <NavContainerMain>

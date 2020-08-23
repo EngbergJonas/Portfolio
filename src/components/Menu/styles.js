@@ -16,12 +16,11 @@ const moveRight = keyframes`
 const slideIn = keyframes`
 
   from {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
 
   to {
-    transform: translateX(25%); 
-
+    transform: translateX(-55%); 
   }
 `
 
@@ -109,6 +108,7 @@ export const NavHyperlink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   &:hover {
     cursor: pointer;
     color: ${props => props.theme.colors.neutralDark};
@@ -197,7 +197,7 @@ export const DropdownContainer = styled.div`
   top: 70px;
   width: 200px;
   animation: ${slideIn} 300ms ease;
-  transform: translateX(25%);
+  transform: translateX(-55%);
   background-color: ${props => props.theme.colors.primaryDark};
   border: 1px ${props => props.theme.colors.primaryDark};
   border-radius: 8px;
@@ -206,7 +206,7 @@ export const DropdownContainer = styled.div`
   transition: height 200ms ease;
 `
 
-//Dropdown item
+//Dropdown hyperlink
 export const DropdownMenuItem = styled.a`
   height: 50px;
   display: flex;
@@ -226,6 +226,8 @@ export const DropdownMenuItem = styled.a`
     transform: translateX(8px);
   }
 `
+
+//Dropdown link
 export const DropdownMenuLink = styled(Link)`
   height: 50px;
   display: flex;
