@@ -34,9 +34,21 @@ export const dark = {
     primaryLight: '#4E4E50', //gray
     secondaryDark: '#6F2242', //red-dark
     secondaryLight: '#950740', //red-lighter
-    secondayPale: '#C3073F', //red-lightest
+    secondaryPale: '#C3073F', //red-lightest
     neutralLight: '#FFFFFF', //white
-    neutralDark: '#66FCF1' //cyan
+    neutralDark: '#66FCF1', //cyan
+    pale: {
+      react: 'rgba(97, 219, 251, 0.8)',
+      angular: 'rgba(181, 46, 49, 0.8)',
+      java: 'rgba(248, 152, 32, 0.8)',
+      python: 'rgba(255, 232, 115, 0.8)',
+      csharp: 'rgba(106, 13, 173, 0.8)'
+    },
+    react: 'rgba(97, 219, 251, 1)',
+    angular: 'rgba(181, 46, 49, 1)',
+    java: 'rgba(248, 152, 32, 1)',
+    python: 'rgba(255, 232, 115, 1)',
+    csharp: 'rgba(106, 13, 173, 1)'
   },
   fonts
 }
@@ -49,7 +61,19 @@ export const light = {
     secondaryLight: '#E98074', //light-red
     secondaryPale: '#E98074', //light-red (again)
     neutralLight: '#686764', //dark-gray
-    neutralDark: '#E85A4F' //red (again)
+    neutralDark: '#E85A4F', //red (again)
+    pale: {
+      react: 'rgba(97, 219, 251, 0.8)',
+      angular: 'rgba(181, 46, 49, 0.8)',
+      java: 'rgba(248, 152, 32, 0.8)',
+      python: 'rgba(255, 232, 115, 0.8)',
+      csharp: 'rgba(106, 13, 173, 0.8)'
+    },
+    react: 'rgba(97, 219, 251, 1)',
+    angular: 'rgba(181, 46, 49, 1)',
+    java: 'rgba(248, 152, 32, 1)',
+    python: 'rgba(255, 232, 115, 1)',
+    csharp: 'rgba(106, 13, 173, 1)'
   },
   fonts
 }
