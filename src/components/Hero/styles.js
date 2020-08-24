@@ -74,7 +74,7 @@ export const Subtitle = styled.div`
 export const Highlight = styled.span`
   font-size: ${props => props.theme.fonts.size.s};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  color: ${props => props.theme.colors.secondaryLight};
+  color: ${props => (props.typewriter ? props.theme.colors.secondaryPale : props.theme.colors.secondaryLight)};
   padding: 0;
   margin: 0;
   display: inline;

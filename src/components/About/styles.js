@@ -34,22 +34,26 @@ export const Page = styled.div`
 export const InfoTab = styled.div`
   width: 70%;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `
 export const InfoContainer = styled.div`
-  width: 50%;
-  float: ${props => (props.left ? 'left' : 'right')};
+  width: 100%;
+  float: left;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 50%;
+    height: 100%;
+    float: ${props => (props.left ? 'left' : 'right')};
+  }
 `
 
 export const InfoTitle = styled.h3`
   ${colorScheme};
+  ${scrollPosition};
   font-family: 'Raleway', sans-serif;
   font-size: ${props => props.theme.fonts.size.large.md};
   font-weight: ${props => props.theme.fonts.weight.thick};
   padding: 0;
   margin: 0;
-  /* This will position the anchor tag nicely */
-  ${scrollPosition};
 `
 
 export const Line = styled.div`
@@ -61,8 +65,9 @@ export const Line = styled.div`
   & svg {
     height: 100%;
     width: 75%;
-    fill: ${props => props.theme.colors.neutralDark};
-    stroke: ${props => props.theme.colors.neutralDark};
+    stroke: ${props => props.theme.colors.secondaryPale};
+    //transform: translate(0, 400);
+    //transform: scale(1, -1);
   }
 `
 
@@ -104,7 +109,7 @@ export const ImageContainer = styled.div`
 export const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   color: ${props => props.theme.colors.neutralLight};
-  font-size: ${props => props.theme.fonts.size.large.md};
+  font-size: ${props => props.theme.fonts.size.large.lg};
   font-weight: ${props => props.theme.fonts.weight.thick};
   margin: 2.5rem 0 0 0;
   ${scrollPosition};
@@ -114,7 +119,7 @@ export const Title = styled.h1`
 `
 
 export const IntroParagraph = styled.p`
-  font-size: ${props => props.theme.fonts.size.sm};
+  font-size: ${props => props.theme.fonts.size.lg};
   font-family: 'Raleway', sans-serif;
   font-weight: ${props => (props.iconText ? props.theme.fonts.weight.bold : props.theme.fonts.weight.light)};
   color: ${props => (props.info ? props.theme.colors.secondaryDark : props.theme.colors.neutralLight)};
@@ -132,25 +137,26 @@ export const InfoParagraph = styled.p`
 `
 
 export const Container = styled.div`
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 1rem;
+  margin: 0 auto;
+  text-align: center;
   width: 70%;
 `
 
-export const ContainerItem = styled.div`
+export const ItemContainer = styled.div`
   text-align: center;
   & svg {
-    stroke: ${props => props.theme.colors.neutralDark};
+    stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryLight)};
     height: auto;
-    width: 100%;
-    margin: 0 auto;
+    width: ${props => (props.signature ? '20%' : '10%')};
+    margin: 0;
     text-align: center;
-    fill: ${props => props.theme.colors.neutralDark};
-    @media ${device.greaterThan.laptop} {
-      width: 80%;
+    fill: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryLight)};
+    @media ${device.greaterThan.laptopLMin} {
+      width: ${props => (props.signature ? '10%' : '5%')};
+      height: auto;
     }
   }
 `

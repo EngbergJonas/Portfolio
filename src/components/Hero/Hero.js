@@ -1,6 +1,6 @@
 import React from 'react'
 import { Title, Subtitle, Highlight, Container, Page, Button, Item } from './styles'
-import { Cursor } from '../Shared/Styles'
+import { Cursor } from '../Shared/styles'
 import Typewriter from '../Shared/Typewriter'
 import { connect } from 'react-redux'
 import { dark } from '../Shared/Theme'
@@ -29,7 +29,7 @@ const Hero = props => {
 
       <Subtitle>
         {t('titles.frontpage.row3')}{' '}
-        <Highlight>
+        <Highlight typewriter>
           <Cursor>
             <Typewriter words={[ t('expertises.fullstack'), t('expertises.design'), t('expertises.engineer') ]} />
           </Cursor>

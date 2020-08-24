@@ -47,7 +47,7 @@ const centerFlexNoDecor = css`
 `
 
 const navTextStyle = css`
-  font-weight: ${props => props.theme.fonts.weight.normal};
+  font-weight: ${props => props.theme.fonts.weight.bold};
   font-size: ${props => props.theme.fonts.size.md};
   color: ${props => props.theme.colors.neutralLight};
 `
@@ -57,7 +57,7 @@ const desktopLinkStyles = css`
   ${centerFlexNoDecor};
   &:hover {
     cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
+    color: ${props => props.theme.colors.secondaryPale};
   }
 `
 
@@ -70,7 +70,7 @@ const mobileLinkStyles = css`
   justify-content: flex-start;
   &:hover {
     cursor: pointer;
-    color: ${props => props.theme.colors.neutralDark};
+    color: ${props => props.theme.colors.secondaryPale};
     animation: ${moveRight} 300ms ease;
     transform: translateX(8px);
   }
@@ -93,7 +93,7 @@ export const Navbar = styled.nav`
   width: 100%;
   background-color: ${props => props.theme.colors.primaryDark};
   padding: 0 1rem;
-  border-bottom: 1.5px solid ${props => props.theme.colors.neutralDark};
+  border-bottom: 1.5px solid ${props => props.theme.colors.secondaryDark};
   z-index: 999;
   font-family: 'Raleway', sans-serif;
 `
@@ -164,7 +164,7 @@ export const IconButton = styled.a`
   @media ${device.greaterThan.laptopLMin} {
     background-color: ${props => props.theme.colors.neutralLight};
     &:hover {
-      background-color: ${props => props.theme.colors.neutralDark};
+      background-color: ${props => props.theme.colors.secondaryLight};
       animation-name: ${spin};
       animation-duration: 600ms;
       transform: rotate(180deg);
@@ -185,7 +185,7 @@ export const Brand = styled(IconButton)`
     width: calc(60px);
     height: calc(60px);
     &:hover{
-      fill: ${props => props.theme.colors.neutralDark};
+      fill: ${props => props.theme.colors.secondaryLight};
       animation: ${shrink} 300ms ease;
     }
   }

@@ -9,6 +9,7 @@ import { ReactComponent as Pen } from '../../assets/media/pen.svg'
 import { ReactComponent as Signature } from '../../assets/media/signature_thick.svg'
 import { ReactComponent as SketchylineUp } from '../../assets/media/sketchylines_up.svg'
 import { ReactComponent as SketchylineDown } from '../../assets/media/sketchylines_down.svg'
+import { ReactComponent as Logo } from '../../assets/media/logo.svg'
 import { connect } from 'react-redux'
 import { dark } from '../Shared/Theme'
 
@@ -19,7 +20,7 @@ import {
   IntroParagraph,
   Container,
   Title,
-  ContainerItem,
+  ItemContainer,
   Image,
   ImageContainer,
   Line,
@@ -31,6 +32,13 @@ import {
   Underline
 } from './styles'
 
+/*
+        <LogoContainer icon={<LightBulb />} text={t('variables.invent')} />
+        <LogoContainer icon={<Pen />} text={t('variables.design')} />
+        <LogoContainer icon={<Diamond />} text={t('variables.implement')} />
+
+
+*/
 const About = React.forwardRef((props, ref) => {
   const { t } = useTranslation()
 
@@ -39,31 +47,58 @@ const About = React.forwardRef((props, ref) => {
 
   const LogoContainer = props => (
     <div>
-      <ContainerItem>
+      <ItemContainer>
         {props.icon}
         <IntroParagraph iconText>{props.text}</IntroParagraph>
-      </ContainerItem>
+      </ItemContainer>
+    </div>
+  )
+
+  const SignatureContainer = () => (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <ItemContainer signature>
+        <LogoContainer style={{ margin: '0' }} icon={<Signature />} />
+      </ItemContainer>
     </div>
   )
 
   const SketchSection = props => (
     <div>
       <Line>
-        <SketchylineUp />
-      </Line>
-      <Container>{props.children}</Container>
-      <Line>
         <SketchylineDown />
       </Line>
+      <Container>{props.children}</Container>
     </div>
   )
 
   const InfoSection = props => {
     return (
-      <div style={{ display: 'flex' }}>
-        <InfoTab>
-          <InfoContainer left={props.left}>{props.children}</InfoContainer>
-        </InfoTab>
+      <div>
+        <div style={{ display: 'flex' }}>
+          <InfoTab>
+            <InfoContainer left={props.left}>{props.children}</InfoContainer>
+            <InfoContainer>
+              <div
+                style={{
+                  display: 'flex',
+                  height: '100%',
+                  width: '100%',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <svg
+                  style={{
+                    height: '40%',
+                    width: 'auto'
+                  }}
+                >
+                  <Logo />
+                </svg>
+              </div>
+            </InfoContainer>
+          </InfoTab>
+        </div>
       </div>
     )
   }
@@ -72,36 +107,35 @@ const About = React.forwardRef((props, ref) => {
     <div>
       {/* Title */}
       <Container>
-        <ContainerItem>
+        <ItemContainer>
           <Title ref={ref} id='about'>
             {t('titles.about')}
           </Title>
-        </ContainerItem>
+        </ItemContainer>
       </Container>
 
       {/* Profile Picture */}
       <Container>
-        <ContainerItem>
+        <ItemContainer>
           <ImageContainer>
             <Image src={props.theme === dark ? jonasDark : jonasLight} />
           </ImageContainer>
-        </ContainerItem>
+        </ItemContainer>
       </Container>
 
       {/* Intro */}
       <Container>
-        <ContainerItem>
+        <ItemContainer>
           <IntroParagraph>{t('paragraphs.aboutIntro')}</IntroParagraph>
-        </ContainerItem>
+        </ItemContainer>
       </Container>
 
-      {/* Sketches */}
-      <SketchSection>
-        <LogoContainer icon={<LightBulb />} text={t('variables.invent')} />
-        <LogoContainer icon={<Pen />} text={t('variables.design')} />
-        <LogoContainer icon={<Diamond />} text={t('variables.implement')} />
-      </SketchSection>
+      {/* Sepparator */}
+      <Line>
+        <SketchylineUp />
+      </Line>
 
+      {/* Experience */}
       <InfoSection left>
         <InfoTitle>Skills & Experiences</InfoTitle>
         <InfoParagraph>
@@ -125,32 +159,74 @@ const About = React.forwardRef((props, ref) => {
         </InfoParagraph>
       </InfoSection>
 
-      <InfoSection>
+      {/* Sepparator */}
+      <Line>
+        <SketchylineDown />
+      </Line>
+
+      <LogoContainer icon={<Logo />} />
+
+      <InfoSection left>
         <InfoTitle java ref={javaRef}>
           Java
         </InfoTitle>
-        <InfoParagraph>During my first year at school I learned about Java.</InfoParagraph>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
       </InfoSection>
-
-      <InfoSection left>
+      <InfoSection>
         <InfoTitle python>Python</InfoTitle>
-        <InfoParagraph>During my first year at school I learned about Java.</InfoParagraph>
-      </InfoSection>
-
-      <InfoSection>
-        <InfoTitle react>React</InfoTitle>
-        <InfoParagraph>During my first year at school I learned about Java.</InfoParagraph>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
       </InfoSection>
 
       <InfoSection left>
-        <InfoTitle angular>Angular</InfoTitle>
-        <InfoParagraph>During my first year at school I learned about Java.</InfoParagraph>
+        <InfoTitle react>React</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
       </InfoSection>
 
       <InfoSection>
-        <InfoTitle csharp>C# and .NET</InfoTitle>
-        <InfoParagraph>During my first year at school I learned about Java.</InfoParagraph>
+        <InfoTitle angular>Angular</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
       </InfoSection>
+
+      <InfoSection left>
+        <InfoTitle csharp>C# and .NET</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+      <SignatureContainer />
     </div>
   )
 
@@ -164,3 +240,69 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
+
+/*
+      <InfoSection>
+        <InfoTitle java ref={javaRef}>
+          Java
+        </InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+
+      <InfoSection left>
+        <InfoTitle python>Python</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+
+      <InfoSection>
+        <InfoTitle react>React</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+
+      <InfoSection left>
+        <InfoTitle angular>Angular</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+
+      <InfoSection>
+        <InfoTitle csharp>C# and .NET</InfoTitle>
+        <InfoParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
+          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
+          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
+          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
+          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
+          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
+        </InfoParagraph>
+      </InfoSection>
+
+
+*/
