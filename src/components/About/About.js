@@ -22,7 +22,6 @@ import {
   IntroParagraph,
   Container,
   Title,
-  ItemContainer,
   Image,
   ImageContainer,
   Line,
@@ -90,20 +89,11 @@ const About = React.forwardRef((props, ref) => {
     ))
 
   const LogoContainer = props => (
-    <div>
-      <ItemContainer>
-        {props.icon}
-        <IntroParagraph iconText>{props.text}</IntroParagraph>
-      </ItemContainer>
-    </div>
-  )
-
-  const SignatureContainer = () => (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <ItemContainer signature>
-        <LogoContainer style={{ margin: '0' }} icon={<Signature />} />
-      </ItemContainer>
-    </div>
+    <Container signature={props.signature}>
+      <div>
+        <svg>{props.icon}</svg>
+      </div>
+    </Container>
   )
 
   const ExperiencesIntro = () => (
@@ -171,34 +161,34 @@ const About = React.forwardRef((props, ref) => {
     <div>
       {/* Title */}
       <Container>
-        <ItemContainer>
+        <div>
           <Title ref={ref} id='about'>
             {t('titles.about.main')}
           </Title>
-        </ItemContainer>
+        </div>
       </Container>
 
       {/* Profile Picture */}
       <Container>
-        <ItemContainer>
+        <div>
           <ImageContainer>
             <Image src={props.theme === dark ? jonasDark : jonasLight} />
           </ImageContainer>
-        </ItemContainer>
+        </div>
       </Container>
       {/* Intro */}
       <Container>
-        <ItemContainer>
+        <div>
           <IntroParagraph>{t('paragraphs.aboutIntro')}</IntroParagraph>
-        </ItemContainer>
+        </div>
       </Container>
 
       <ExperiencesIntro />
 
       <Container>
-        <ItemContainer>
+        <div>
           <Subtitle>Technologies</Subtitle>
-        </ItemContainer>
+        </div>
       </Container>
 
       <LogoContainer icon={logo} />
@@ -210,7 +200,7 @@ const About = React.forwardRef((props, ref) => {
           {t(`paragraphs.${topic}`)}
         </InfoSection>
       </div>
-      <SignatureContainer />
+      <LogoContainer signature icon={<Signature />} />
     </div>
   )
 
@@ -224,145 +214,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
-
-/*
-
-
-      
-      
-
-      <InfoSection>
-        <InfoTitle java ref={javaRef}>
-          Java
-        </InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-            <InfoSection>
-        <InfoTitle python>Python</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection left>
-        <InfoTitle react>React</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection>
-        <InfoTitle angular>Angular</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection left>
-        <InfoTitle csharp>C# and .NET</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-
-*/
-
-/* LOGO ON THE SIDE
-  const InfoSection = props => {
-    return (
-      <div>
-        <div style={{ display: 'flex' }}>
-          <InfoTab>
-            <InfoContainer left={props.left}>{props.children}</InfoContainer>
-            <div style={{ width: '30%', height: '100%', float: 'right' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  height: '100%',
-                  width: '100%',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <svg
-                  style={{
-                    height: '100px',
-                    width: 'auto',
-                    fill: ''
-                  }}
-                >
-                  {props.logo}
-                </svg>
-              </div>
-            </div>
-          </InfoTab>
-        </div>
-      </div>
-    )
-  }
-*/
-/* LOGO ONTOP OF TITLE
-  const InfoSection = props => {
-    return (
-      <div>
-        <div style={{ display: 'flex' }}>
-          <InfoTab>
-            <div
-              style={{
-                display: 'flex',
-                height: '80px',
-                width: '80px',
-                background: 'blue',
-                borderRadius: '50%',
-                textAlign: 'center',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <svg
-                style={{
-                  height: 'auto',
-                  width: '90%'
-                }}
-              >
-                {props.logo}
-              </svg>
-            </div>
-            <InfoContainer left={props.left}>{props.children}</InfoContainer>
-            <InfoContainer />
-          </InfoTab>
-        </div>
-      </div>
-    )
-  }
-
-  */
