@@ -1,17 +1,33 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import device from '../../device'
 
-const colorScheme = css`
-  color: ${props =>
-    props.react
-      ? props.theme.colors.react
-      : props.java
-        ? props.theme.colors.java
-        : props.python
-          ? props.theme.colors.python
-          : props.csharp
-            ? props.theme.colors.csharp
-            : props.angular ? props.theme.colors.angular : props.theme.colors.neutralDark};
+const colorScheme = css`color: ${props => props.$color || props.theme.colors.neutralDark};`
+
+const slideInLeft = keyframes`
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%); 
+  }
+`
+
+const slideInRight = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%); 
+  }
+`
+
+const extend = keyframes`
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1); 
+  }
 `
 
 const scrollPosition = css`
@@ -35,25 +51,66 @@ export const InfoTab = styled.div`
   width: 70%;
   margin: 0 auto;
   margin-bottom: 2rem;
+
+  & div {
+    width: 100%;
+    float: left;
+    font-family: 'Raleway', sans-serif;
+    font-size: ${props => props.theme.fonts.size.s};
+    font-weight: ${props => props.theme.fonts.weight.normal};
+    color: ${props => props.theme.colors.neutralLight};
+  }
+
+  & p {
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: ${props => props.theme.fonts.size.s};
+    font-weight: ${props => props.theme.fonts.weight.normal};
+    color: ${props => props.theme.colors.neutralLight};
+    animation: ${props => (props.main ? '' : css`${slideInLeft} 500ms ease;`)};
+    @media ${device.greaterThan.laptopLMin} {
+      width: ${props => (props.main ? '70%' : '100%')};
+    }
+  }
+
+  @media ${device.greaterThan.laptopLMin} {
+    & div {
+      width: 70%;
+      height: 100%;
+      float: left;
+      font-family: 'Raleway', sans-serif;
+      font-size: ${props => props.theme.fonts.size.s};
+      font-weight: ${props => props.theme.fonts.weight.normal};
+      color: ${props => props.theme.colors.neutralLight};
+    }
+  }
 `
 export const InfoContainer = styled.div`
   width: 100%;
   float: left;
+  & p {
+    font-family: 'Raleway', sans-serif;
+    font-size: ${props => props.theme.fonts.size.s};
+    font-weight: ${props => props.theme.fonts.weight.normal};
+    color: ${props => props.theme.colors.neutralLight};
+  }
   @media ${device.greaterThan.laptopLMin} {
     width: 50%;
     height: 100%;
-    float: ${props => (props.left ? 'left' : 'right')};
+    padding: 0 5rem 0 5rem;
   }
 `
 
 export const InfoTitle = styled.h3`
   ${colorScheme};
   ${scrollPosition};
+  display: flex;
   font-family: 'Raleway', sans-serif;
   font-size: ${props => props.theme.fonts.size.large.md};
-  font-weight: ${props => props.theme.fonts.weight.thick};
+  font-weight: ${props => props.theme.fonts.weight.bold};
   padding: 0;
   margin: 0;
+  animation: ${props => (props.main ? '' : css`${slideInRight} 500ms ease;`)};
 `
 
 export const Line = styled.div`
@@ -61,13 +118,11 @@ export const Line = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
   & svg {
     height: 100%;
     width: 75%;
-    stroke: ${props => props.theme.colors.secondaryPale};
-    //transform: translate(0, 400);
-    //transform: scale(1, -1);
+    stroke: ${props => props.theme.colors.neutralDark};
   }
 `
 
@@ -75,10 +130,10 @@ export const Underline = styled.span`
   width: max-content;
   box-sizing: border-box;
   cursor: pointer;
-  box-shadow: inset 0px -7px ${props => (props.react ? props.theme.colors.pale.react : props.java ? props.theme.colors.pale.java : props.python ? props.theme.colors.pale.python : props.csharp ? props.theme.colors.pale.csharp : props.angular ? props.theme.colors.pale.angular : props.theme.colors.pale.neutralDark)};
+  box-shadow: inset 0px -7px ${props => props.$color || props.theme.colors.neutralDark};
   transition: box-shadow 250ms ease;
   &:hover {
-    box-shadow: inset 0px -25px ${props => (props.react ? props.theme.colors.pale.react : props.java ? props.theme.colors.pale.java : props.python ? props.theme.colors.pale.python : props.csharp ? props.theme.colors.pale.csharp : props.angular ? props.theme.colors.pale.angular : props.theme.colors.pale.neutralDark)};
+    box-shadow: inset 0px -25px ${props => props.$color || props.theme.colors.neutralDark};
   }
 `
 
@@ -110,11 +165,23 @@ export const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   color: ${props => props.theme.colors.neutralLight};
   font-size: ${props => props.theme.fonts.size.large.lg};
-  font-weight: ${props => props.theme.fonts.weight.thick};
+  font-weight: ${props => props.theme.fonts.weight.bold};
   margin: 2.5rem 0 0 0;
   ${scrollPosition};
   @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.large.hl};
+    font-size: ${props => props.theme.fonts.size.large.xxl};
+  }
+`
+
+export const Subtitle = styled.h1`
+  font-family: 'Raleway', sans-serif;
+  color: ${props => props.theme.colors.neutralLight};
+  font-size: ${props => props.theme.fonts.size.large.s};
+  font-weight: ${props => props.theme.fonts.weight.bold};
+  margin: 0 0 2.5rem 0;
+  ${scrollPosition};
+  @media ${device.greaterThan.laptop} {
+    font-size: ${props => props.theme.fonts.size.large.lg};
   }
 `
 
@@ -130,7 +197,7 @@ export const IntroParagraph = styled.p`
 `
 
 export const InfoParagraph = styled.p`
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: ${props => props.theme.fonts.size.s};
   font-weight: ${props => props.theme.fonts.weight.normal};
   color: ${props => props.theme.colors.neutralLight};
@@ -148,15 +215,67 @@ export const Container = styled.div`
 export const ItemContainer = styled.div`
   text-align: center;
   & svg {
-    stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryLight)};
-    height: auto;
-    width: ${props => (props.signature ? '20%' : '10%')};
+    stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : '')};
+    height: ${props => (props.signature ? '100px' : '100px')};
+    width: auto;
     margin: 0;
     text-align: center;
-    fill: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryLight)};
+    fill: ${props => (props.signature ? props.theme.colors.secondaryDark : '')};
+    animation: ${extend} 300ms ease;
     @media ${device.greaterThan.laptopLMin} {
-      width: ${props => (props.signature ? '10%' : '5%')};
-      height: auto;
+      height: ${props => (props.signature ? '80px' : '100px')};
     }
+  }
+`
+
+export const Button = styled.button`
+  border: 2px solid ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
+  margin: 0 2rem;
+  display: inline-block;
+  letter-spacing: 0.2px;
+  padding: 0.6rem 0;
+  width: 100px;
+  font-size: 11px;
+  font-family: 'Raleway', sans-serif;
+  background: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
+  color: ${props => props.theme.colors.primaryDark};
+  font-weight: ${props => props.theme.fonts.weight.bold};
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    background: none;
+    color: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    transform: translateY(-4px);
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+  @media ${device.greaterThan.laptopLMin} {
+    width: 150px;
+  }
+`
+
+export const ButtonContainer = styled.div`
+  width: 75%;
+  display: block;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem 0 2rem 0;
+  overflow: auto;
+  white-space: nowrap;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 75%;
+    display: flex;
   }
 `

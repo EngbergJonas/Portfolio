@@ -14,7 +14,6 @@ export const useCloseOnClickOutside = (ref, initialValue) => {
     event.preventDefault()
     setOpen(!open)
   }
-  console.log(open)
   useEffect(
     () => {
       const handler = event => {

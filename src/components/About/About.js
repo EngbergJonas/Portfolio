@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 import jonasLight from '../../assets/media/jonas_light.jpg'
 import jonasDark from '../../assets/media/jonas_dark.jpg'
@@ -10,10 +10,17 @@ import { ReactComponent as Signature } from '../../assets/media/signature_thick.
 import { ReactComponent as SketchylineUp } from '../../assets/media/sketchylines_up.svg'
 import { ReactComponent as SketchylineDown } from '../../assets/media/sketchylines_down.svg'
 import { ReactComponent as Logo } from '../../assets/media/logo.svg'
-import { connect } from 'react-redux'
-import { dark } from '../Shared/Theme'
+import { ReactComponent as ReactLogo } from '../../assets/media/react.svg'
+import { ReactComponent as AngularLogo } from '../../assets/media/angular.svg'
+import { ReactComponent as PythonLogo } from '../../assets/media/python.svg'
+import { ReactComponent as CSharpLogo } from '../../assets/media/csharp.svg'
+import { ReactComponent as JavaLogo } from '../../assets/media/java.svg'
 
-import { useTranslation } from 'react-i18next'
+import { useToggle } from '../../hooks/index'
+import { connect } from 'react-redux'
+import { dark, light } from '../Shared/Theme'
+
+import { useTranslation, Trans } from 'react-i18next'
 
 import {
   Page,
@@ -27,23 +34,60 @@ import {
   //Skills & Experience styles
   InfoTitle,
   InfoTab,
-  InfoContainer,
-  InfoParagraph,
-  Underline
+  Underline,
+  Button,
+  ButtonContainer,
+  Subtitle
 } from './styles'
 
-/*
-        <LogoContainer icon={<LightBulb />} text={t('variables.invent')} />
-        <LogoContainer icon={<Pen />} text={t('variables.design')} />
-        <LogoContainer icon={<Diamond />} text={t('variables.implement')} />
+const topicsList = [
+  {
+    name: 'React',
+    logo: <ReactLogo />
+  },
+  {
+    name: 'Angular',
+    logo: <AngularLogo />
+  },
+  {
+    name: 'C#',
+    logo: <CSharpLogo />
+  },
+  {
+    name: 'Python',
+    logo: <PythonLogo />
+  },
+  {
+    name: 'Java',
+    logo: <JavaLogo />
+  }
+]
 
-
-*/
 const About = React.forwardRef((props, ref) => {
   const { t } = useTranslation()
+  const [ topic, setTopic ] = useState('react')
+  const [ logo, setLogo ] = useState(topicsList[0].logo)
+  const [ active, setActive ] = useState(0)
+  const topicRef = useRef(null)
 
-  const javaRef = useRef(null)
-  const scrollToRef = ref => window.scrollTo({ top: ref.current.offsetTop, left: 0, behavior: 'smooth' })
+  const scrollToTopic = () => window.scrollTo({ top: topicRef.current.offsetTop, left: 0, behavior: 'smooth' })
+
+  const handleTopicChange = (topic, index, logo) => {
+    setTopic(topic.toLowerCase())
+    setLogo(logo)
+    setActive(index)
+  }
+
+  const createButtons = () =>
+    topicsList.map((topic, index) => (
+      <Button
+        key={topic.name.toLowerCase()}
+        onClick={() => handleTopicChange(topic.name, index, topic.logo)}
+        active={active === index}
+      >
+        {topic.name.toLowerCase().includes('csharp') ? 'C#' : topic.name.toUpperCase()}
+      </Button>
+    ))
 
   const LogoContainer = props => (
     <div>
@@ -62,54 +106,78 @@ const About = React.forwardRef((props, ref) => {
     </div>
   )
 
-  const SketchSection = props => (
+  const ExperiencesIntro = () => (
     <div>
+      <Line>
+        <SketchylineUp />
+      </Line>
+
+      <InfoTab main>
+        <InfoTitle main>{t('titles.about.experiences')}</InfoTitle>
+        <p main>
+          {t('exparagraph.1')} <TopicLink color={'java'}>Java</TopicLink>, {t('exparagraph.2')}{' '}
+          <TopicLink color={'csharp'}>C#</TopicLink>. {t('exparagraph.3')}{' '}
+          <TopicLink color={'python'}>Python</TopicLink>
+        </p>
+        <p main>
+          {t('exparagraph.4')} <TopicLink color={'react'}>React</TopicLink>.
+        </p>
+        <p main>
+          {t('exparagraph.5')} <TopicLink color={'angular'}>Angular</TopicLink> {t('exparagraph.5')}{' '}
+          <TopicLink color={'csharp'}>.NET</TopicLink>.
+        </p>
+      </InfoTab>
       <Line>
         <SketchylineDown />
       </Line>
-      <Container>{props.children}</Container>
     </div>
   )
 
   const InfoSection = props => {
+    const logo = topicsList.map(
+      topic =>
+        topic.name.toLowerCase() === props.title.toLowerCase() ? (
+          topic.logo
+        ) : topic.name.toLowerCase().includes('csharp') ? (
+          <CSharpLogo />
+        ) : (
+          ''
+        )
+    )
     return (
       <div>
         <div style={{ display: 'flex' }}>
           <InfoTab>
-            <InfoContainer left={props.left}>{props.children}</InfoContainer>
-            <InfoContainer>
-              <div
-                style={{
-                  display: 'flex',
-                  height: '100%',
-                  width: '100%',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <svg
-                  style={{
-                    height: '40%',
-                    width: 'auto'
-                  }}
-                >
-                  <Logo />
-                </svg>
-              </div>
-            </InfoContainer>
+            <InfoTitle
+              style={{ textAlign: 'left' }}
+              $color={props.theme === dark ? dark.colors[props.color] : light.colors[props.color]}
+            >
+              {props.title}
+            </InfoTitle>
+            <div dangerouslySetInnerHTML={{ __html: props.children }} />
           </InfoTab>
         </div>
       </div>
     )
   }
 
+  const TopicLink = props => (
+    <Underline
+      $color={props.dark ? dark.colors.pale[props.color] : light.colors.pale[props.color]}
+      onClick={() => scrollToTopic()}
+    >
+      {props.children}
+    </Underline>
+  )
+
+  /* */
   const rows = t => (
     <div>
       {/* Title */}
       <Container>
         <ItemContainer>
           <Title ref={ref} id='about'>
-            {t('titles.about')}
+            {t('titles.about.main')}
           </Title>
         </ItemContainer>
       </Container>
@@ -122,7 +190,6 @@ const About = React.forwardRef((props, ref) => {
           </ImageContainer>
         </ItemContainer>
       </Container>
-
       {/* Intro */}
       <Container>
         <ItemContainer>
@@ -130,102 +197,23 @@ const About = React.forwardRef((props, ref) => {
         </ItemContainer>
       </Container>
 
-      {/* Sepparator */}
-      <Line>
-        <SketchylineUp />
-      </Line>
+      <ExperiencesIntro />
 
-      {/* Experience */}
-      <InfoSection left>
-        <InfoTitle>Skills & Experiences</InfoTitle>
-        <InfoParagraph>
-          I started my carreer at Arcada, University of Applied Sciences, where I studied for 4 years to become an IT
-          Engineer. During my first years I learned the basics of programming using{' '}
-          <Underline onClick={() => scrollToRef(javaRef)} java>
-            Java
-          </Underline>, and the basics of game development using <Underline csharp>C#</Underline>. During my third and
-          fourth year we dove deeper into AI learning and data parsing using <Underline python>Python</Underline>
-        </InfoParagraph>
-        <InfoParagraph>
-          At the end of my fourth year I started to get really interested in web development. I started learning the
-          basics of Javascript and moved deeper into modern frameworks. I also took the FullStack Open course at the
-          University of Helsinki, which after I got a very good understanding of modern frameworks, specifically{' '}
-          <Underline react>React</Underline>.
-        </InfoParagraph>
-        <InfoParagraph>
-          After a few years of making applications for my own use I got my first development job at CGI. Where I have
-          now worked for 6 months and learned all kind of new frameworks and technologies like{' '}
-          <Underline angular>Angular</Underline> and <Underline csharp>.NET</Underline>.
-        </InfoParagraph>
-      </InfoSection>
+      <Container>
+        <ItemContainer>
+          <Subtitle>Technologies</Subtitle>
+        </ItemContainer>
+      </Container>
 
-      {/* Sepparator */}
-      <Line>
-        <SketchylineDown />
-      </Line>
+      <LogoContainer icon={logo} />
 
-      <LogoContainer icon={<Logo />} />
+      <ButtonContainer>{createButtons()}</ButtonContainer>
 
-      <InfoSection left>
-        <InfoTitle java ref={javaRef}>
-          Java
-        </InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-      <InfoSection>
-        <InfoTitle python>Python</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection left>
-        <InfoTitle react>React</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection>
-        <InfoTitle angular>Angular</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
-
-      <InfoSection left>
-        <InfoTitle csharp>C# and .NET</InfoTitle>
-        <InfoParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
-          erat egestas. Integer placerat ligula ac nisi vulputate, eu semper lectus euismod. Integer ut est at ex
-          feugiat feugiat. In sed gravida lacus. Ut facilisis metus sit amet lectus imperdiet, a vehicula enim mattis.
-          Nunc nec tortor mi. Sed pharetra, quam sed fermentum congue, ante quam ullamcorper est, a elementum erat sem
-          ut nisi. Praesent vehicula nisi nunc, sit amet fermentum dui faucibus quis. Sed placerat diam eget rutrum
-          tempor. Curabitur ac consectetur ligula, quis pulvinar nibh.
-        </InfoParagraph>
-      </InfoSection>
+      <div ref={topicRef}>
+        <InfoSection logo={<ReactLogo />} color={topic} title={t(`titles.about.${topic}`)}>
+          {t(`paragraphs.${topic}`)}
+        </InfoSection>
+      </div>
       <SignatureContainer />
     </div>
   )
@@ -242,6 +230,11 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
 
 /*
+
+
+      
+      
+
       <InfoSection>
         <InfoTitle java ref={javaRef}>
           Java
@@ -256,7 +249,7 @@ export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
         </InfoParagraph>
       </InfoSection>
 
-      <InfoSection left>
+            <InfoSection>
         <InfoTitle python>Python</InfoTitle>
         <InfoParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
@@ -268,7 +261,7 @@ export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
         </InfoParagraph>
       </InfoSection>
 
-      <InfoSection>
+      <InfoSection left>
         <InfoTitle react>React</InfoTitle>
         <InfoParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
@@ -280,7 +273,7 @@ export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
         </InfoParagraph>
       </InfoSection>
 
-      <InfoSection left>
+      <InfoSection>
         <InfoTitle angular>Angular</InfoTitle>
         <InfoParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
@@ -292,7 +285,7 @@ export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
         </InfoParagraph>
       </InfoSection>
 
-      <InfoSection>
+      <InfoSection left>
         <InfoTitle csharp>C# and .NET</InfoTitle>
         <InfoParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tincidunt arcu ut magna eleifend, in egestas
@@ -306,3 +299,74 @@ export default connect(mapStateToProps, null, null, { forwardRef: true })(About)
 
 
 */
+
+/* LOGO ON THE SIDE
+  const InfoSection = props => {
+    return (
+      <div>
+        <div style={{ display: 'flex' }}>
+          <InfoTab>
+            <InfoContainer left={props.left}>{props.children}</InfoContainer>
+            <div style={{ width: '30%', height: '100%', float: 'right' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  height: '100%',
+                  width: '100%',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <svg
+                  style={{
+                    height: '100px',
+                    width: 'auto',
+                    fill: ''
+                  }}
+                >
+                  {props.logo}
+                </svg>
+              </div>
+            </div>
+          </InfoTab>
+        </div>
+      </div>
+    )
+  }
+*/
+/* LOGO ONTOP OF TITLE
+  const InfoSection = props => {
+    return (
+      <div>
+        <div style={{ display: 'flex' }}>
+          <InfoTab>
+            <div
+              style={{
+                display: 'flex',
+                height: '80px',
+                width: '80px',
+                background: 'blue',
+                borderRadius: '50%',
+                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <svg
+                style={{
+                  height: 'auto',
+                  width: '90%'
+                }}
+              >
+                {props.logo}
+              </svg>
+            </div>
+            <InfoContainer left={props.left}>{props.children}</InfoContainer>
+            <InfoContainer />
+          </InfoTab>
+        </div>
+      </div>
+    )
+  }
+
+  */
