@@ -9,6 +9,7 @@ const expand = keyframes`
     transform: scale(1); 
   }
 `
+//animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
 const expandAnimation = css`
   animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
 `
@@ -45,9 +46,10 @@ export const Page = styled.div`
   font-family: 'Raleway', sans-serif;
 `
 
-export const InfoTab = styled.div`
+export const TopicContainer = styled.div`
   ${expandAnimation};
   ${blogText};
+  animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
   width: 85%;
   margin: 0 auto;
   margin-bottom: 2rem;
@@ -61,9 +63,12 @@ export const InfoTab = styled.div`
       width: 70%;
     }
   }
+  @media ${device.greaterThan.laptopLMin} {
+    width: 70%;
+  }
 `
 
-export const InfoTitle = styled.h3`
+export const TopicTitle = styled.h3`
   ${colorScheme};
   ${scrollPosition};
   ${expandAnimation};
@@ -85,7 +90,7 @@ export const Line = styled.div`
   margin-bottom: 2rem;
   & svg {
     height: 100%;
-    width: 85%;
+    width: 75%;
     stroke: ${props => props.theme.colors.neutralDark};
   }
 `
@@ -229,7 +234,7 @@ export const ButtonContainer = styled.div`
   overflow: auto;
   white-space: nowrap;
   @media ${device.greaterThan.laptopLMin} {
-    width: 70%;
+    width: 50%;
     display: flex;
     padding: 2rem 0;
   }
