@@ -49,9 +49,16 @@ const About = React.forwardRef((props, ref) => {
 
   const Buttons = () => <ButtonContainer>{createButtons()}</ButtonContainer>
 
+  const Section = props => (
+    <Container>
+      <div>{props.children}</div>
+    </Container>
+  )
+
   const Topic = props => {
     const color = props.value.includes('c#') ? 'csharp' : props.value
     const value = props.value
+
     return (
       <TopicContainer>
         <TopicTitle
@@ -64,12 +71,6 @@ const About = React.forwardRef((props, ref) => {
       </TopicContainer>
     )
   }
-
-  const Section = props => (
-    <Container>
-      <div>{props.children}</div>
-    </Container>
-  )
 
   const Icon = props => (
     <Container signature={props.signature}>

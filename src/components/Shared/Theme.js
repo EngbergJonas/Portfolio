@@ -30,9 +30,9 @@ const fonts = {
 
 export const dark = {
   colors: {
-    primaryDark: '#222831', //dark-blue
-    primaryLight: '#393E46', //gray
-    secondaryDark: '#66FCF1', //cyan
+    primaryDark: '#181818', //dark-blue
+    primaryLight: '#1d1d1d', //gray
+    secondaryDark: '#00FFD7', //cyan
     secondaryLight: '#FC0D56', //red
     secondaryPale: 'rgba(255, 232, 115, 1)', //yellow
     neutralLight: '#FFFFFF', //white

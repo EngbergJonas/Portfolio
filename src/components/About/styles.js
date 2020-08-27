@@ -13,7 +13,7 @@ const expand = keyframes`
 const expandAnimation = css`
   animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
 `
-const colorScheme = css`color: ${props => props.$color || props.theme.colors.neutralDark};`
+const colorScheme = css`color: ${props => props.$color || props.theme.colors.secondaryDark};`
 const centerFlex = css`
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@ const scrollPosition = css`
   }
 `
 export const Page = styled.div`
-  background: ${props => props.theme.colors.primaryDark};
+  background: ${props => props.theme.colors.primaryLight};
   border-top: 1.5px solid ${props => props.theme.colors.neutralDark};
   align-items: center;
   font-family: 'Raleway', sans-serif;
@@ -60,7 +60,7 @@ export const TopicContainer = styled.div`
   & p {
     width: 100%;
     @media ${device.greaterThan.laptopLMin} {
-      width: 70%;
+      width: 60%;
     }
   }
   @media ${device.greaterThan.laptopLMin} {
@@ -74,7 +74,7 @@ export const TopicTitle = styled.h3`
   ${expandAnimation};
   display: flex;
   font-size: ${props => props.theme.fonts.size.large.xs};
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  font-weight: ${props => props.theme.fonts.weight.thick};
   padding: 0;
   margin: 0;
   @media ${device.greaterThan.laptopLMin} {
@@ -91,7 +91,7 @@ export const Line = styled.div`
   & svg {
     height: 100%;
     width: 75%;
-    stroke: ${props => props.theme.colors.neutralDark};
+    stroke: ${props => props.theme.colors.secondaryDark};
   }
 `
 
@@ -133,9 +133,9 @@ export const ImageContainer = styled.div`
 export const Title = styled.h1`
   ${scrollPosition};
   margin: 2rem 0;
-  color: ${props => props.theme.colors.neutralLight};
+  color: ${props => props.theme.colors.secondaryDark};
   font-size: ${props => props.theme.fonts.size.large.md};
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  font-weight: ${props => props.theme.fonts.weight.thick};
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.xxl};
   }
@@ -145,7 +145,7 @@ export const Subtitle = styled.h1`
   font-family: 'Raleway', sans-serif;
   color: ${props => props.theme.colors.neutralLight};
   font-size: ${props => props.theme.fonts.size.large.s};
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  font-weight: ${props => props.theme.fonts.weight.thick};
   margin: 1rem 0;
   ${scrollPosition};
   @media ${device.greaterThan.laptop} {
@@ -193,21 +193,20 @@ export const Button = styled.button`
   width: 100px;
   font-size: 8px;
   font-family: 'Raleway', sans-serif;
-  background: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
-  color: ${props => props.theme.colors.primaryDark};
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  background: ${props => (props.active ? props.theme.colors.secondaryLight : 'transparent')};
+  color: ${props => (props.active ? props.theme.colors.neutralLight : props.theme.colors.neutralLight)};
+  font-weight: ${props => props.theme.fonts.weight.thick};
   border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease 0s;
   display: inline-block;
   text-align: center;
   text-decoration: none;
   &:hover {
     cursor: pointer;
-    background: none;
-    color: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    background: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.9);
+    color: ${props => (props.active ? props.theme.colors.primaryDark : props.theme.colors.primaryDark)};
     transform: translateY(-4px);
   }
   &:focus {
@@ -234,7 +233,7 @@ export const ButtonContainer = styled.div`
   overflow: auto;
   white-space: nowrap;
   @media ${device.greaterThan.laptopLMin} {
-    width: 50%;
+    width: 60%;
     display: flex;
     padding: 2rem 0;
   }

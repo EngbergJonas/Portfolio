@@ -30,7 +30,7 @@ export const Item = styled.div`margin: 2rem 0 0;`
 
 export const Title = styled.h1`
   font-size: ${props => props.theme.fonts.size.large.lg};
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  font-weight: ${props => props.theme.fonts.weight.thick};
   font-style: 'Open Sans', sans-serif;
   color: ${props => props.theme.colors.neutralLight};
   padding: 0;
@@ -52,7 +52,7 @@ export const Title = styled.h1`
   }
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.hl};
-    font-weight: ${props => props.theme.fonts.weight.bold};
+    font-weight: ${props => props.theme.fonts.weight.thick};
   }
 `
 
@@ -74,7 +74,7 @@ export const Subtitle = styled.div`
 export const Highlight = styled.span`
   font-size: ${props => props.theme.fonts.size.s};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  color: ${props => (props.typewriter ? props.theme.colors.secondaryPale : props.theme.colors.secondaryLight)};
+  color: ${props => (props.typewriter ? props.theme.colors.secondaryDark : props.theme.colors.secondaryLight)};
   padding: 0;
   margin: 0;
   display: inline;
