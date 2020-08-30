@@ -11,7 +11,7 @@ import { light, dark } from '../Shared/Theme'
 
 import DropdownItem from './DropdownItem'
 import DropdownToggler from './DropdownToggler'
-
+import cv from '../../assets/media/CV.pdf'
 import { useWindowDimensions } from '../../hooks/index'
 
 const DropdownMenu = props => {
@@ -38,7 +38,9 @@ const DropdownMenu = props => {
         {t('navigation.about')}
       </DropdownMenuLink>
       <DropdownItem>{t('navigation.projects')}</DropdownItem>
-      <DropdownItem>{t('navigation.resume')}</DropdownItem>
+      <DropdownItem href={cv} target='_blank'>
+        {t('navigation.resume')}
+      </DropdownItem>
       <DropdownItem>{t('navigation.contact')}</DropdownItem>
     </div>
   )

@@ -60,7 +60,7 @@ export const IconContainer = styled.div`
   }
 `
 
-export const BlockContainer = styled.div`
+export const TopicContainer = styled.div`
   width: 85%;
   margin: 0 auto;
   display: flex;
@@ -69,24 +69,22 @@ export const BlockContainer = styled.div`
   }
 `
 
-export const TopicContainer = styled.div`
+export const TopicContent = styled.div`
   ${blogText};
   width: 100%;
   margin-bottom: 2rem;
   & div {
-    width: 100%;
-    float: left;
-    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
     @media ${device.greaterThan.laptopLMin} {
-      min-height: 220px;
+      min-height: 155px;
     }
   }
   & p {
-    width: 100%;
+    padding: 0.3rem 0 0.3rem 0;
+    margin: 0;
     ${expandAnimation};
-    @media ${device.greaterThan.laptopLMin} {
-      width: 100%;
-    }
   }
   @media ${device.greaterThan.laptopLMin} {
     width: 60%;
@@ -96,21 +94,21 @@ export const TopicContainer = styled.div`
 export const TopicTitle = styled.h3`
   ${colorScheme};
   ${scrollPosition};
-  display: flex;
+
   font-size: ${props => props.theme.fonts.size.large.xs};
   font-weight: ${props => props.theme.fonts.weight.thick};
+
   padding: 0;
-  margin: 0;
+  margin: 0 0 1rem 0;
+
   @media ${device.greaterThan.laptopLMin} {
     font-size: ${props => props.theme.fonts.size.large.lg};
   }
 `
 
 export const Line = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${centerFlex};
   width: 100%;
-  align-items: center;
   margin-bottom: 2rem;
   & svg {
     width: 85%;
@@ -167,20 +165,7 @@ export const Title = styled.h1`
   }
 `
 
-export const Subtitle = styled.h2`
-  font-family: 'Raleway', sans-serif;
-  color: ${props => props.theme.colors.secondaryDark};
-  font-size: ${props => props.theme.fonts.size.large.s};
-  font-weight: ${props => props.theme.fonts.weight.thick};
-  margin: 1rem 0 0 0;
-  ${scrollPosition};
-  @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.large.lg};
-    margin: 0;
-  }
-`
-
-export const IntroParagraph = styled.p`
+export const Intro = styled.p`
   font-size: ${props => props.theme.fonts.size.lg};
   font-weight: ${props => props.theme.fonts.weight.light};
   color: ${props => props.theme.colors.neutralLight};
@@ -201,7 +186,7 @@ export const Container = styled.div`
       fill: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryDark)};
       height: ${props => (props.signature ? '50px' : '200px')};
       @media ${device.greaterThan.laptopLMin} {
-        height: ${props => (props.signature ? '55px' : '150px')};
+        height: ${props => (props.signature ? '55px' : '200px')};
         display: block;
       }
     }
@@ -213,7 +198,6 @@ export const Container = styled.div`
 
 export const Button = styled.button`
   border: 1px solid ${props => (props.active ? props.$color : props.theme.colors.secondaryDark)};
-  //margin: 0 0.5rem;
   display: inline-block;
   letter-spacing: 0.2px;
   padding: 0.5rem 0;
@@ -223,7 +207,7 @@ export const Button = styled.button`
   background: ${props => (props.active ? props.$color : 'transparent')};
   color: ${props => (props.active ? props.theme.colors.primaryDark : props.theme.colors.neutralLight)};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
+  box-shadow: ${props => (props.light ? '0px 8px 15px rgba(0, 0, 0, 0.2)' : '0px 8px 15px rgba(0, 0, 0, 0.8)')};
   transition: all 300ms ease;
   display: inline-block;
   text-align: center;
@@ -233,7 +217,7 @@ export const Button = styled.button`
     border: 1px solid ${props => props.$hoverColor};
     cursor: pointer;
     background: ${props => props.$hoverColor};
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.9);
+    box-shadow: ${props => (props.light ? '0px 15px 20px rgba(0, 0, 0, 0.3)' : '0px 15px 20px rgba(0, 0, 0, 0.9)')};
     color: ${props => props.theme.colors.primaryDark};
     transform: translateY(-4px);
   }

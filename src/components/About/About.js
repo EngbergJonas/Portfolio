@@ -1,11 +1,11 @@
 import React, { useRef } from 'react'
 
-import { Signature, Icon, Topic, Buttons, Experiences, jonasLight, jonasDark } from './index'
 import { connect } from 'react-redux'
 import { dark } from '../Shared/Theme'
 import { useTranslation } from 'react-i18next'
 
-import { Page, IntroParagraph, Container, Title, Image, ImageContainer } from './styles.js'
+import { Signature, Icon, Topic, Buttons, Experiences, jonasLight, jonasDark } from './index'
+import { Page, Intro, Container, Title, Image, ImageContainer } from './styles.js'
 
 const About = React.forwardRef((props, ref) => {
   const { t } = useTranslation()
@@ -35,7 +35,7 @@ const About = React.forwardRef((props, ref) => {
 
       {/* Intro */}
       <Section>
-        <IntroParagraph>{t('paragraphs.aboutIntro')}</IntroParagraph>
+        <Intro>{t('paragraphs.aboutIntro')}</Intro>
       </Section>
 
       {/* Skills & Experiences */}
@@ -45,6 +45,7 @@ const About = React.forwardRef((props, ref) => {
       <div ref={topicRef}>
         <Topic t={t}>{t(`paragraphs.${props.topic.name.toLowerCase()}`)}</Topic>
       </div>
+
       {/* Signature */}
       <Icon signature icon={<Signature />} />
 

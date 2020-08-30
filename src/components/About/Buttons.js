@@ -21,6 +21,7 @@ const Buttons = props => {
         <Button
           $color={color(topic)}
           $hoverColor={color(topic)}
+          light={props.theme === light}
           key={topic.name.toLowerCase()}
           onClick={() => handleTopicChange(index, topic)}
           active={props.activeButton === index}

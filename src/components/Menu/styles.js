@@ -89,7 +89,7 @@ export const DropdownMenuLink = styled(Link)`${mobileLinkStyles};`
 //Navigation Bar
 export const Navbar = styled.nav`
   height: 60px;
-  position: sticky;
+  position: fixed;
   width: 100%;
   background-color: ${props => props.theme.colors.primaryDark};
   padding: 0 1rem;

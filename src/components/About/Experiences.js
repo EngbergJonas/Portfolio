@@ -1,6 +1,6 @@
 import React from 'react'
 import { SketchylineDown, Icon, LightBulb } from './index'
-import { TopicContainer, Line, TopicTitle, Underline, BlockContainer, IconContainer } from './styles'
+import { TopicContainer, Line, TopicTitle, Underline, TopicContent, IconContainer } from './styles'
 import { topicList } from '../../assets/other/topicList'
 import { setTopic } from '../../reducers/topicReducer'
 import { setActiveButton } from '../../reducers/activeButtonReducer'
@@ -32,8 +32,8 @@ const Experiences = props => {
   //
   return (
     <div>
-      <BlockContainer>
-        <TopicContainer main>
+      <TopicContainer>
+        <TopicContent main>
           <TopicTitle main>{props.t('titles.about.experiences')}</TopicTitle>
           <p>
             {props.t('exparagraph.1')}{' '}
@@ -67,11 +67,11 @@ const Experiences = props => {
             </Highlight>{' '}
             {props.t('exparagraph.5')} SQL
           </p>
-        </TopicContainer>
+        </TopicContent>
         <IconContainer>
           <Icon icon={<LightBulb />} />
         </IconContainer>
-      </BlockContainer>
+      </TopicContainer>
 
       <Line>
         <SketchylineDown />

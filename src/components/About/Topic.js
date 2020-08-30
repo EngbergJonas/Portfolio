@@ -1,14 +1,14 @@
 import React from 'react'
-import { BlockContainer, TopicContainer, TopicTitle } from './styles'
+import { TopicContent, TopicContainer, TopicTitle } from './styles'
 
 const Topic = props => {
   return (
-    <BlockContainer>
-      <TopicContainer>
+    <TopicContainer>
+      <TopicContent>
         <TopicTitle main>Technologies</TopicTitle>
         <div dangerouslySetInnerHTML={{ __html: props.children }} />
-      </TopicContainer>
-    </BlockContainer>
+      </TopicContent>
+    </TopicContainer>
   )
 }
 
