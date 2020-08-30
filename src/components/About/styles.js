@@ -9,9 +9,9 @@ const expand = keyframes`
     transform: scale(1); 
   }
 `
-//animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
+
 const expandAnimation = css`
-  animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
+  animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 500ms ease;`)};
 `
 const colorScheme = css`color: ${props => props.$color || props.theme.colors.secondaryDark};`
 const centerFlex = css`
@@ -20,11 +20,11 @@ const centerFlex = css`
   justify-content: center;
 `
 const blogText = css`
-  font-size: ${props => props.theme.fonts.size.xs};
-  font-weight: ${props => props.theme.fonts.weight.normal};
+  font-size: 14px;
+  font-weight: ${props => props.theme.fonts.weight.light};
   color: ${props => props.theme.colors.neutralLight};
   @media ${device.greaterThan.laptopLMin} {
-    font-size: ${props => props.theme.fonts.size.md};
+    font-size: ${props => props.theme.fonts.size.xs};
   }
 `
 
@@ -46,39 +46,63 @@ export const Page = styled.div`
   font-family: 'Raleway', sans-serif;
 `
 
-export const TopicContainer = styled.div`
-  ${expandAnimation};
-  ${blogText};
-  animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 300ms ease;`)};
+export const Random = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const IconContainer = styled.div`
+  display: none;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 40%;
+    display: flex;
+    align-items: center;
+  }
+`
+
+export const BlockContainer = styled.div`
   width: 85%;
   margin: 0 auto;
+  display: flex;
+  @media ${device.greaterThan.laptopLMin} {
+    width: 70%;
+  }
+`
+
+export const TopicContainer = styled.div`
+  ${blogText};
+  width: 100%;
   margin-bottom: 2rem;
   & div {
     width: 100%;
     float: left;
+    min-height: 300px;
+    @media ${device.greaterThan.laptopLMin} {
+      min-height: 220px;
+    }
   }
   & p {
     width: 100%;
+    ${expandAnimation};
     @media ${device.greaterThan.laptopLMin} {
-      width: 60%;
+      width: 100%;
     }
   }
   @media ${device.greaterThan.laptopLMin} {
-    width: 70%;
+    width: 60%;
   }
 `
 
 export const TopicTitle = styled.h3`
   ${colorScheme};
   ${scrollPosition};
-  ${expandAnimation};
   display: flex;
   font-size: ${props => props.theme.fonts.size.large.xs};
   font-weight: ${props => props.theme.fonts.weight.thick};
   padding: 0;
   margin: 0;
   @media ${device.greaterThan.laptopLMin} {
-    font-size: ${props => props.theme.fonts.size.large.md};
+    font-size: ${props => props.theme.fonts.size.large.lg};
   }
 `
 
@@ -89,9 +113,11 @@ export const Line = styled.div`
   align-items: center;
   margin-bottom: 2rem;
   & svg {
-    height: 100%;
-    width: 75%;
+    width: 85%;
     stroke: ${props => props.theme.colors.secondaryDark};
+    @media ${device.greaterThan.laptopLMin} {
+      width: 75%;
+    }
   }
 `
 
@@ -125,8 +151,8 @@ export const ImageContainer = styled.div`
     width: 110px;
   }
   @media ${device.greaterThan.tablet} {
-    height: 180px;
-    width: 180px;
+    height: 140px;
+    width: 140px;
   }
 `
 
@@ -141,16 +167,16 @@ export const Title = styled.h1`
   }
 `
 
-export const Subtitle = styled.h1`
+export const Subtitle = styled.h2`
   font-family: 'Raleway', sans-serif;
-  color: ${props => props.theme.colors.neutralLight};
+  color: ${props => props.theme.colors.secondaryDark};
   font-size: ${props => props.theme.fonts.size.large.s};
   font-weight: ${props => props.theme.fonts.weight.thick};
-  margin: 1rem 0;
+  margin: 1rem 0 0 0;
   ${scrollPosition};
   @media ${device.greaterThan.laptop} {
     font-size: ${props => props.theme.fonts.size.large.lg};
-    margin: 0 0 2.5rem 0;
+    margin: 0;
   }
 `
 
@@ -170,12 +196,13 @@ export const Container = styled.div`
   & div {
     text-align: center;
     & svg {
-      stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : '')};
-      fill: ${props => (props.signature ? props.theme.colors.secondaryDark : '')};
-      height: ${props => (props.signature ? '50px' : '70px')};
-      margin: 0 auto;
+      display: ${props => (props.signature ? '' : 'none')};
+      stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryDark)};
+      fill: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryDark)};
+      height: ${props => (props.signature ? '50px' : '200px')};
       @media ${device.greaterThan.laptopLMin} {
-        height: ${props => (props.signature ? '80px' : '100px')};
+        height: ${props => (props.signature ? '55px' : '150px')};
+        display: block;
       }
     }
   }
@@ -185,28 +212,29 @@ export const Container = styled.div`
 `
 
 export const Button = styled.button`
-  border: 2px solid ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
-  margin: 0 0.5rem;
+  border: 1px solid ${props => (props.active ? props.$color : props.theme.colors.secondaryDark)};
+  //margin: 0 0.5rem;
   display: inline-block;
   letter-spacing: 0.2px;
   padding: 0.5rem 0;
-  width: 100px;
+  width: 70px;
   font-size: 8px;
   font-family: 'Raleway', sans-serif;
-  background: ${props => (props.active ? props.theme.colors.secondaryLight : 'transparent')};
-  color: ${props => (props.active ? props.theme.colors.neutralLight : props.theme.colors.neutralLight)};
-  font-weight: ${props => props.theme.fonts.weight.thick};
-  border-radius: 45px;
+  background: ${props => (props.active ? props.$color : 'transparent')};
+  color: ${props => (props.active ? props.theme.colors.primaryDark : props.theme.colors.neutralLight)};
+  font-weight: ${props => props.theme.fonts.weight.bold};
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease 0s;
+  transition: all 300ms ease;
   display: inline-block;
   text-align: center;
   text-decoration: none;
+  margin-right: 4px;
   &:hover {
+    border: 1px solid ${props => props.$hoverColor};
     cursor: pointer;
-    background: ${props => (props.active ? props.theme.colors.secondaryLight : props.theme.colors.secondaryDark)};
+    background: ${props => props.$hoverColor};
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.9);
-    color: ${props => (props.active ? props.theme.colors.primaryDark : props.theme.colors.primaryDark)};
+    color: ${props => props.theme.colors.primaryDark};
     transform: translateY(-4px);
   }
   &:focus {
@@ -216,25 +244,26 @@ export const Button = styled.button`
   @media ${device.greaterThan.laptopLMin} {
     width: 150px;
     font-size: 11px;
-    margin: 0 2rem;
+    margin-right: 1rem;
     padding: 0.6rem 0;
+    font-weight: ${props => props.theme.fonts.weight.light};
   }
 `
 
 export const ButtonContainer = styled.div`
-  width: 90%;
-  display: block;
-  flex-shrink: 0;
+  width: 80%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  flex-shrink: 0;
   margin: 0 auto;
   padding: 1rem;
   overflow: auto;
   white-space: nowrap;
   @media ${device.greaterThan.laptopLMin} {
-    width: 60%;
-    display: flex;
+    width: 70%;
+
     padding: 2rem 0;
   }
 `

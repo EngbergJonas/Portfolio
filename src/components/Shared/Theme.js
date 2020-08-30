@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 const fonts = {
   size: {
-    xs: '16px',
+    xs: '1rem',
     s: '18px',
     md: '20px',
     lg: '22px',
@@ -38,16 +38,16 @@ export const dark = {
     neutralLight: '#FFFFFF', //white
     neutralDark: '#66FCF1', //cyan
     pale: {
-      react: 'rgba(97, 219, 251, 0.8)',
-      angular: 'rgba(181, 46, 49, 0.8)',
-      java: 'rgba(248, 152, 32, 0.8)',
-      python: 'rgba(255, 232, 115, 0.8)',
+      javascript: 'rgba(240, 219, 79, 0.8)',
+      html: 'rgba(227, 76, 38, 0.8)',
+      css: 'rgba(38, 77, 228, 0.8)',
+      node: 'rgba(60, 135, 58, 0.8)',
       csharp: 'rgba(106, 13, 173, 0.8)'
     },
-    react: 'rgba(97, 219, 251, 1)',
-    angular: 'rgba(181, 46, 49, 1)',
-    java: 'rgba(248, 152, 32, 1)',
-    python: 'rgba(255, 232, 115, 1)',
+    javascript: 'rgba(240, 219, 79, 1)',
+    html: 'rgba(227, 76, 38, 1)',
+    css: 'rgba(38, 77, 228, 1)',
+    node: 'rgba(60, 135, 58, 1)',
     csharp: 'rgba(106, 13, 173, 1)'
   },
   fonts
@@ -63,16 +63,16 @@ export const light = {
     neutralLight: '#686764', //dark-gray
     neutralDark: '#E85A4F', //red (again)
     pale: {
-      react: 'rgba(97, 219, 251, 0.8)',
-      angular: 'rgba(181, 46, 49, 0.8)',
-      java: 'rgba(248, 152, 32, 0.8)',
-      python: 'rgba(48, 105, 152, 0.8)',
+      javascript: 'rgba(240, 219, 79, 0.8)',
+      html: 'rgba(227, 76, 38, 0.8)',
+      css: 'rgba(38, 77, 228, 0.8)',
+      node: 'rgba(60, 135, 58, 0.8)',
       csharp: 'rgba(106, 13, 173, 0.8)'
     },
-    react: 'rgba(97, 219, 251, 1)',
-    angular: 'rgba(181, 46, 49, 1)',
-    java: 'rgba(248, 152, 32, 1)',
-    python: 'rgba(48, 105, 152, 1)',
+    javascript: 'rgba(240, 219, 79, 1)',
+    html: 'rgba(227, 76, 38, 1)',
+    css: 'rgba(38, 77, 228, 1)',
+    node: 'rgba(60, 135, 58, 1)',
     csharp: 'rgba(106, 13, 173, 1)'
   },
   fonts

@@ -9,7 +9,7 @@ import About from './components/About/About'
 
 import './index.css'
 
-const App = () => {
+const App = props => {
   const aboutRef = React.createRef()
   return (
     <Theme>

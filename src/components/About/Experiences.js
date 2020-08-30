@@ -1,7 +1,11 @@
 import React from 'react'
-import { SketchylineUp, SketchylineDown, topicsList } from './index'
-import { TopicContainer, Line, TopicTitle, Underline } from './styles'
+import { SketchylineDown, Icon, LightBulb } from './index'
+import { TopicContainer, Line, TopicTitle, Underline, BlockContainer, IconContainer } from './styles'
+import { topicList } from '../../assets/other/topicList'
+import { setTopic } from '../../reducers/topicReducer'
+import { setActiveButton } from '../../reducers/activeButtonReducer'
 import { connect } from 'react-redux'
+
 import { dark, light } from '../Shared/Theme'
 
 const Highlight = props => {
@@ -17,48 +21,58 @@ const Highlight = props => {
 const Experiences = props => {
   //const topic = props.topic
   const scrollToTopic = () => window.scrollTo({ top: props.topicRef.current.offsetTop, left: 0, behavior: 'smooth' })
+
   const handleScrollToTopic = topic => {
     scrollToTopic()
-    props.setTopic(topic)
+    const index = topicList.map(t => t.name.toLowerCase()).indexOf(topic.toLowerCase())
+    props.setTopic(topicList[index])
+    props.setActiveButton(index)
   }
 
+  //
   return (
     <div>
-      <Line>
-        <SketchylineUp />
-      </Line>
+      <BlockContainer>
+        <TopicContainer main>
+          <TopicTitle main>{props.t('titles.about.experiences')}</TopicTitle>
+          <p>
+            {props.t('exparagraph.1')}{' '}
+            <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
+              C#
+            </Highlight>.
+          </p>
+          <p>
+            {props.t('exparagraph.2')}{' '}
+            <Highlight handleChange={() => handleScrollToTopic('javascript')} value={'javascript'}>
+              JavaScript
+            </Highlight>,
+            <Highlight handleChange={() => handleScrollToTopic('html')} value={'html'}>
+              HTML
+            </Highlight>,{' '}
+            <Highlight handleChange={() => handleScrollToTopic('css')} value={'css'}>
+              CSS
+            </Highlight>{' '}
+            {props.t('exparagraph.3')}{' '}
+            <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
+              ASP.NET MVC
+            </Highlight>.
+          </p>
+          <p>
+            {props.t('exparagraph.4')}{' '}
+            <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
+              .NET Core
+            </Highlight>,{' '}
+            <Highlight handleChange={() => handleScrollToTopic('node')} value={'node'}>
+              Node
+            </Highlight>{' '}
+            {props.t('exparagraph.5')} SQL
+          </p>
+        </TopicContainer>
+        <IconContainer>
+          <Icon icon={<LightBulb />} />
+        </IconContainer>
+      </BlockContainer>
 
-      <TopicContainer main>
-        <TopicTitle main>{props.t('titles.about.experiences')}</TopicTitle>
-        <p>
-          {props.t('exparagraph.1')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('java')} value={'java'}>
-            {topicsList[0].name}
-          </Highlight>, {props.t('exparagraph.2')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
-            C#
-          </Highlight>. {props.t('exparagraph.3')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('python')} value={'python'}>
-            Python
-          </Highlight>
-        </p>
-        <p>
-          {props.t('exparagraph.4')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('react')} value={'react'}>
-            React
-          </Highlight>.
-        </p>
-        <p>
-          {props.t('exparagraph.5')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('angular')} value={'angular'}>
-            Angular
-          </Highlight>{' '}
-          {props.t('exparagraph.5')}{' '}
-          <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
-            .NET
-          </Highlight>.
-        </p>
-      </TopicContainer>
       <Line>
         <SketchylineDown />
       </Line>
@@ -72,4 +86,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Experiences)
+export default connect(mapStateToProps, { setTopic, setActiveButton })(Experiences)

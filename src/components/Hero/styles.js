@@ -88,7 +88,8 @@ export const Highlight = styled.span`
 
 export const Button = styled.button`
   border: 1px solid ${props => props.theme.colors.neutralLight};
-  border-radius: 4px;
+  letter-spacing: 2px;
+  font-family: 'Raleway', sans-serif;
   padding: 0.6rem;
   margin: 0.6rem 0 0;
   background: transparent;
@@ -103,11 +104,5 @@ export const Button = styled.button`
   &:focus {
     outline: 0;
     box-shadow: none;
-  }
-  @media ${device.greaterThan.laptop} {
-    font-size: ${props => props.theme.fonts.size.md};
-  }
-  @media ${device.greaterThan.laptopL} {
-    font-size: ${props => props.theme.fonts.size.lg};
   }
 `

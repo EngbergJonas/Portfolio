@@ -47,7 +47,7 @@ const centerFlexNoDecor = css`
 `
 
 const navTextStyle = css`
-  font-weight: ${props => props.theme.fonts.weight.bold};
+  font-weight: ${props => props.theme.fonts.weight.light};
   font-size: ${props => props.theme.fonts.size.md};
   color: ${props => props.theme.colors.neutralLight};
 `
@@ -57,7 +57,7 @@ const desktopLinkStyles = css`
   ${centerFlexNoDecor};
   &:hover {
     cursor: pointer;
-    color: ${props => props.theme.colors.secondaryPale};
+    color: ${props => props.theme.colors.secondaryDark};
   }
 `
 
@@ -70,7 +70,7 @@ const mobileLinkStyles = css`
   justify-content: flex-start;
   &:hover {
     cursor: pointer;
-    color: ${props => props.theme.colors.secondaryPale};
+    color: ${props => props.theme.colors.secondaryDark};
     animation: ${moveRight} 300ms ease;
     transform: translateX(8px);
   }
@@ -89,7 +89,7 @@ export const DropdownMenuLink = styled(Link)`${mobileLinkStyles};`
 //Navigation Bar
 export const Navbar = styled.nav`
   height: 60px;
-  position: fixed;
+  position: sticky;
   width: 100%;
   background-color: ${props => props.theme.colors.primaryDark};
   padding: 0 1rem;
