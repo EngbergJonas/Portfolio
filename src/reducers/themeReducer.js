@@ -1,10 +1,10 @@
 import { dark } from '../components/Shared/Theme'
 
-export const setTheme = theme => {
-  return async dispatch => {
+export const setTheme = (theme) => {
+  return async (dispatch) => {
     dispatch({
       type: 'SET_THEME',
-      theme
+      theme,
     })
   }
 }

@@ -16,16 +16,16 @@ const fonts = {
       lg: '60px',
       xl: '70px',
       xxl: '80px',
-      hl: '100px'
-    }
+      hl: '100px',
+    },
   },
   weight: {
     thin: '100',
     light: '300',
     normal: '400',
     bold: '500',
-    thick: '700'
-  }
+    thick: '700',
+  },
 }
 
 export const dark = {
@@ -37,20 +37,15 @@ export const dark = {
     secondaryPale: 'rgba(255, 232, 115, 1)', //yellow
     neutralLight: '#FFFFFF', //white
     neutralDark: '#66FCF1', //cyan
-    pale: {
-      javascript: 'rgba(240, 219, 79, 0.8)',
-      html: 'rgba(227, 76, 38, 0.8)',
-      css: 'rgba(38, 77, 228, 0.8)',
-      node: 'rgba(60, 135, 58, 0.8)',
-      csharp: 'rgba(106, 13, 173, 0.8)'
+    hack: {
+      javascript: 'rgba(240, 219, 79, 1)',
+      html: 'rgba(227, 76, 38, 1)',
+      css: 'rgba(38, 77, 228, 1)',
+      node: 'rgba(60, 135, 58, 1)',
+      csharp: 'rgba(106, 13, 173, 1)',
     },
-    javascript: 'rgba(240, 219, 79, 1)',
-    html: 'rgba(227, 76, 38, 1)',
-    css: 'rgba(38, 77, 228, 1)',
-    node: 'rgba(60, 135, 58, 1)',
-    csharp: 'rgba(106, 13, 173, 1)'
   },
-  fonts
+  fonts,
 }
 
 export const light = {
@@ -62,27 +57,23 @@ export const light = {
     secondaryPale: '#E98074', //light-red (again)
     neutralLight: '#686764', //dark-gray
     neutralDark: '#E85A4F', //red (again)
-    pale: {
-      javascript: 'rgba(240, 219, 79, 0.8)',
-      html: 'rgba(227, 76, 38, 0.8)',
-      css: 'rgba(38, 77, 228, 0.8)',
-      node: 'rgba(60, 135, 58, 0.8)',
-      csharp: 'rgba(106, 13, 173, 0.8)'
+    hack: {
+      javascript: 'rgba(240, 219, 79, 1)',
+      html: 'rgba(227, 76, 38, 1)',
+      css: 'rgba(38, 77, 228, 1)',
+      node: 'rgba(60, 135, 58, 1)',
+      csharp: 'rgba(106, 13, 173, 1)',
     },
-    javascript: 'rgba(240, 219, 79, 1)',
-    html: 'rgba(227, 76, 38, 1)',
-    css: 'rgba(38, 77, 228, 1)',
-    node: 'rgba(60, 135, 58, 1)',
-    csharp: 'rgba(106, 13, 173, 1)'
   },
-  fonts
+
+  fonts,
 }
 
-const Theme = props => <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
+const Theme = (props) => <ThemeProvider theme={props.theme}>{props.children}</ThemeProvider>
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    theme: state.theme
+    theme: state.theme,
   }
 }
 

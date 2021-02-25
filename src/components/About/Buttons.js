@@ -6,14 +6,13 @@ import { connect } from 'react-redux'
 import { setTopic } from '../../reducers/topicReducer'
 import { setActiveButton } from '../../reducers/activeButtonReducer'
 
-const Buttons = props => {
+const Buttons = (props) => {
   const handleTopicChange = (index, topic) => {
     props.setTopic(topic)
     props.setActiveButton(index)
   }
 
-  const color = topic =>
-    props.theme === dark ? dark.colors[topic.name.toLowerCase()] : light.colors[topic.name.toLowerCase()]
+  const color = (topic) => (props.theme === dark ? dark.colors.hack[topic.name.toLowerCase()] : light.colors.hack[topic.name.toLowerCase()])
 
   return (
     <ButtonContainer>
@@ -33,10 +32,10 @@ const Buttons = props => {
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     theme: state.theme,
-    activeButton: state.activeButton
+    activeButton: state.activeButton,
   }
 }
 

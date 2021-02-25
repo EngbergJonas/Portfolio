@@ -1,21 +1,31 @@
 import React, { useRef } from 'react'
 
-import { connect } from 'react-redux'
+import { connect, useSelector, useDispatch } from 'react-redux'
 import { dark } from '../Shared/Theme'
 import { useTranslation } from 'react-i18next'
 
 import { Signature, Icon, Topic, Buttons, Experiences, jonasLight, jonasDark } from './index'
 import { Page, Intro, Container, Title, Image, ImageContainer } from './styles.js'
 
-const About = React.forwardRef((props, ref) => {
+interface SectionProps {
+  children: React.ReactNode
+}
+
+const Section = (props: SectionProps) => (
+  <Container>
+    <div>{props.children}</div>
+  </Container>
+)
+
+interface AboutProps {
+  theme: any
+  topic: any
+}
+const About = React.forwardRef((props: AboutProps, ref) => {
   const { t } = useTranslation()
   const topicRef = useRef(null)
 
-  const Section = props => (
-    <Container>
-      <div>{props.children}</div>
-    </Container>
-  )
+  const { theme, topic } = props
 
   return (
     <Page>
@@ -29,7 +39,7 @@ const About = React.forwardRef((props, ref) => {
       {/* Profile Picture */}
       <Section>
         <ImageContainer>
-          <Image src={props.theme === dark ? jonasDark : jonasLight} />
+          <Image src={theme === dark ? jonasDark : jonasLight} />
         </ImageContainer>
       </Section>
 
@@ -43,7 +53,7 @@ const About = React.forwardRef((props, ref) => {
 
       {/* Topics */}
       <div ref={topicRef}>
-        <Topic t={t}>{t(`paragraphs.${props.topic.name.toLowerCase()}`)}</Topic>
+        <Topic t={t}>{t(`paragraphs.${topic.name.toLowerCase()}`)}</Topic>
       </div>
 
       {/* Signature */}
@@ -55,10 +65,10 @@ const About = React.forwardRef((props, ref) => {
   )
 })
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     theme: state.theme,
-    topic: state.topic
+    topic: state.topic,
   }
 }
 

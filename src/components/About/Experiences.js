@@ -1,4 +1,3 @@
-import React from 'react'
 import { SketchylineDown, Icon, LightBulb } from './index'
 import { TopicContainer, Line, TopicTitle, Underline, TopicContent, IconContainer } from './styles'
 import { topicList } from '../../assets/other/topicList'
@@ -8,23 +7,23 @@ import { connect } from 'react-redux'
 
 import { dark, light } from '../Shared/Theme'
 
-const Highlight = props => {
+const Highlight = (props) => {
   const color = props.value
 
   return (
-    <Underline $color={props.dark ? dark.colors.pale[color] : light.colors.pale[color]} onClick={props.handleChange}>
+    <Underline $color={props.dark ? dark.colors.hack[color] : light.colors.hack[color]} onClick={props.handleChange}>
       {props.children}
     </Underline>
   )
 }
 
-const Experiences = props => {
+const Experiences = (props) => {
   //const topic = props.topic
   const scrollToTopic = () => window.scrollTo({ top: props.topicRef.current.offsetTop, left: 0, behavior: 'smooth' })
 
-  const handleScrollToTopic = topic => {
+  const handleScrollToTopic = (topic) => {
     scrollToTopic()
-    const index = topicList.map(t => t.name.toLowerCase()).indexOf(topic.toLowerCase())
+    const index = topicList.map((t) => t.name.toLowerCase()).indexOf(topic.toLowerCase())
     props.setTopic(topicList[index])
     props.setActiveButton(index)
   }
@@ -39,29 +38,34 @@ const Experiences = props => {
             {props.t('exparagraph.1')}{' '}
             <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
               C#
-            </Highlight>.
+            </Highlight>
+            .
           </p>
           <p>
             {props.t('exparagraph.2')}{' '}
             <Highlight handleChange={() => handleScrollToTopic('javascript')} value={'javascript'}>
               JavaScript
-            </Highlight>,
+            </Highlight>
+            ,
             <Highlight handleChange={() => handleScrollToTopic('html')} value={'html'}>
               HTML
-            </Highlight>,{' '}
+            </Highlight>
+            ,{' '}
             <Highlight handleChange={() => handleScrollToTopic('css')} value={'css'}>
               CSS
             </Highlight>{' '}
             {props.t('exparagraph.3')}{' '}
             <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
               ASP.NET MVC
-            </Highlight>.
+            </Highlight>
+            .
           </p>
           <p>
             {props.t('exparagraph.4')}{' '}
             <Highlight handleChange={() => handleScrollToTopic('csharp')} value={'csharp'}>
               .NET Core
-            </Highlight>,{' '}
+            </Highlight>
+            ,{' '}
             <Highlight handleChange={() => handleScrollToTopic('node')} value={'node'}>
               Node
             </Highlight>{' '}
@@ -80,9 +84,9 @@ const Experiences = props => {
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    theme: state.theme
+    theme: state.theme,
   }
 }
 

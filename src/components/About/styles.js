@@ -11,9 +11,16 @@ const expand = keyframes`
 `
 
 const expandAnimation = css`
-  animation: ${props => (props.signature || props.main ? 'none' : css`${expand} 500ms ease;`)};
+  animation: ${props =>
+    props.signature || props.main
+      ? 'none'
+      : css`
+          ${expand} 500ms ease;
+        `};
 `
-const colorScheme = css`color: ${props => props.$color || props.theme.colors.secondaryDark};`
+const colorScheme = css`
+  color: ${props => props.$color || props.theme.colors.secondaryDark};
+`
 const centerFlex = css`
   display: flex;
   align-items: center;
@@ -32,7 +39,7 @@ const scrollPosition = css`
   /* This will position the anchor tag nicely */
   &::before {
     display: block;
-    content: "";
+    content: '';
     margin-top: -5.5rem;
     height: 5.5rem;
     visibility: hidden;
@@ -182,8 +189,14 @@ export const Container = styled.div`
     text-align: center;
     & svg {
       display: ${props => (props.signature ? '' : 'none')};
-      stroke: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryDark)};
-      fill: ${props => (props.signature ? props.theme.colors.secondaryDark : props.theme.colors.secondaryDark)};
+      stroke: ${props =>
+        props.signature
+          ? props.theme.colors.secondaryDark
+          : props.theme.colors.secondaryDark};
+      fill: ${props =>
+        props.signature
+          ? props.theme.colors.secondaryDark
+          : props.theme.colors.secondaryDark};
       height: ${props => (props.signature ? '50px' : '200px')};
       @media ${device.greaterThan.laptopLMin} {
         height: ${props => (props.signature ? '55px' : '200px')};
@@ -197,7 +210,8 @@ export const Container = styled.div`
 `
 
 export const Button = styled.button`
-  border: 1px solid ${props => (props.active ? props.$color : props.theme.colors.secondaryDark)};
+  border: 1px solid
+    ${props => (props.active ? props.$color : props.theme.colors.secondaryDark)};
   display: inline-block;
   letter-spacing: 0.2px;
   padding: 0.5rem 0;
@@ -205,9 +219,15 @@ export const Button = styled.button`
   font-size: 8px;
   font-family: 'Raleway', sans-serif;
   background: ${props => (props.active ? props.$color : 'transparent')};
-  color: ${props => (props.active ? props.theme.colors.primaryDark : props.theme.colors.neutralLight)};
+  color: ${props =>
+    props.active
+      ? props.theme.colors.primaryDark
+      : props.theme.colors.neutralLight};
   font-weight: ${props => props.theme.fonts.weight.bold};
-  box-shadow: ${props => (props.light ? '0px 8px 15px rgba(0, 0, 0, 0.2)' : '0px 8px 15px rgba(0, 0, 0, 0.8)')};
+  box-shadow: ${props =>
+    props.light
+      ? '0px 8px 15px rgba(0, 0, 0, 0.2)'
+      : '0px 8px 15px rgba(0, 0, 0, 0.8)'};
   transition: all 300ms ease;
   display: inline-block;
   text-align: center;
@@ -217,7 +237,10 @@ export const Button = styled.button`
     border: 1px solid ${props => props.$hoverColor};
     cursor: pointer;
     background: ${props => props.$hoverColor};
-    box-shadow: ${props => (props.light ? '0px 15px 20px rgba(0, 0, 0, 0.3)' : '0px 15px 20px rgba(0, 0, 0, 0.9)')};
+    box-shadow: ${props =>
+      props.light
+        ? '0px 15px 20px rgba(0, 0, 0, 0.3)'
+        : '0px 15px 20px rgba(0, 0, 0, 0.9)'};
     color: ${props => props.theme.colors.primaryDark};
     transform: translateY(-4px);
   }
